@@ -7,8 +7,8 @@ function setup() {
 
 function draw() {
 
-  const numA  = 17;
-  const numB =  29;
+  const numA = 10;
+  const numB =  6;
   const RATIO = numB / numA;
 
   let squareWidth = WIDTH;
