@@ -1,6 +1,12 @@
 
+const WIDTH = 500;
+
 function setup() {
-  createCanvas( 500, 500 );
+
+  createCanvas( WIDTH, WIDTH );
+  colorMode( HSB, 100 );
+  noLoop();
+  
 }
 
 function draw() {

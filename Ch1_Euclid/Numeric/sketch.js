@@ -23,8 +23,6 @@ const getGCD = ( a, b ) => {
       break;
     }
 
-    noLoop();
-
   }
 
   // This is the GCD.

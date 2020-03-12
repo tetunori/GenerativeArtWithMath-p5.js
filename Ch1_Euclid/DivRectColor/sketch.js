@@ -1,6 +1,12 @@
 
+const WIDTH = 500;
+
 function setup() {
-  createCanvas( 500, 500 );
+
+  createCanvas( WIDTH, WIDTH );
+  colorMode( HSB, 100 );
+  noLoop();
+  
 }
 
 function draw() {
@@ -13,8 +19,6 @@ function draw() {
   let xPos = 0;
   let yPos = 0;
   let itr = 0;
-
-  colorMode( HSB, 100 );
 
   while( squareWidth > 0 ){
 
@@ -48,9 +52,7 @@ function draw() {
     }
 
   }
-
-  noLoop();
-
+  
 }
 
 // The number is even or not.

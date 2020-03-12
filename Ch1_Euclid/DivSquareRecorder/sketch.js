@@ -2,7 +2,11 @@
 const WIDTH = 500;
 
 function setup() {
+
   createCanvas( WIDTH, WIDTH );
+  colorMode( HSB, 100 );
+  noLoop();
+  
 }
 
 function draw() {
@@ -16,7 +20,6 @@ function draw() {
   let yPos = 0;
   let itr = 0;
 
-  colorMode( HSB, 100 );
   const namePNG = '' + numA + '_' + numB + '.png';
 
   while( squareWidth > 0 ){
@@ -52,7 +55,6 @@ function draw() {
 
   }
 
-  noLoop();
   saveCanvas( namePNG, 'png' );
 
 }
