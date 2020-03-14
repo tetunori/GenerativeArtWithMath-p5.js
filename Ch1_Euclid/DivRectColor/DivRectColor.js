@@ -1,17 +1,14 @@
 
-const CANVAS_WIDTH = 1000; 
-
 const SCALAR = 50;
-const WIDTH  = 9 * SCALAR;
-const HEIGHT =  38 * SCALAR;
-
+const WIDTH  = 10 * SCALAR;
+const HEIGHT =  6 * SCALAR;
 
 function setup() {
 
-  createCanvas( WIDTH + 10, HEIGHT + 10 );
+  createCanvas( WIDTH, HEIGHT );
   colorMode( HSB, 100 );
   noLoop();
-  
+
 }
 
 function draw() {
@@ -24,13 +21,12 @@ function draw() {
   while( squareWidth > 0 ){
 
     itr++;
-    if( !isEven( itr ) ){
+    if( isOdd( itr ) ){
 
       // If iteration number is odd, add square in x-axis direction.
       while( xPos + squareWidth <= WIDTH ){
         
-        const col = color( random( 100 ), 100, 100 );
-        fill( col );
+        fill( getRandomColor() );
         rect( xPos, yPos, squareWidth, squareWidth );
         xPos += squareWidth;
 
@@ -42,8 +38,7 @@ function draw() {
       // If iteration number is even, add square in y-axis direction.
       while ( yPos + squareWidth <= HEIGHT ){
 
-        const col = color( random( 100 ), 100, 100 );
-        fill( col );
+        fill( getRandomColor() );
         rect( xPos, yPos, squareWidth, squareWidth );
         yPos += squareWidth;
         
@@ -53,11 +48,21 @@ function draw() {
     }
 
   }
-  
+
 }
 
 // The number is even or not.
 const isEven = ( number ) => {
   return ( number % 2 === 0 );
+}
+
+// The number is odd or not.
+const isOdd = ( number ) => {
+  return ( number % 2 === 1 );
+}
+
+// Get random color
+const getRandomColor = () => {
+  return color( random( 100 ), 100, 100 );
 }
 

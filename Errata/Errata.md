@@ -12,7 +12,7 @@ The figure of the case `thr = 320` seems to be wrong and a correct figure is lik
 <img src="./1-2.png" width="300px">
 
 ## 1-3. Ch1_Euclid::RecurDivSquare
-### divRect.pde::Line 9
+### 1-3-1. divRect.pde::Line 9
 To be accurate, this comparison needs to take the round-off error into accont as Line 12 or 18.  
 So, change as  
 `while (wd > thr){`  
@@ -23,8 +23,13 @@ or normalize `wd` before this comparison.
 Interestingly, this fix causes the change of Figure 1.10 case `thr = 40`.
 I think both images are beautiful so I don't think this issue has to be fixed😉. 
 
+### 1-3-2. mouseClicked.pde::Line 9
+`ratio = (float) numA / numB;`  
+=>  
+`ratio = (float) numB / numA;`
+
 ## 1-4. Ch1_Euclid::RecurDivSquareGUI
 ### divSq.pde::Line 9
-Same as 1-3.
+Same as 1-3-1.
 
 

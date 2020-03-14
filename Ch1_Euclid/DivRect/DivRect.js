@@ -1,20 +1,16 @@
 
-const CANVAS_WIDTH = 1000; 
-const WIDTH = 500;
+const SCALAR = 50;
+const WIDTH  = 10 * SCALAR;
+const HEIGHT =  6 * SCALAR;
 
 function setup() {
 
-  createCanvas( CANVAS_WIDTH, CANVAS_WIDTH );
-  colorMode( HSB, 100 );
+  createCanvas( WIDTH, HEIGHT );
   noLoop();
-  
+
 }
 
 function draw() {
-
-  const SCALAR = 50;
-  const WIDTH  = 10 * SCALAR;
-  const HEIGHT =  6 * SCALAR;
 
   let squareWidth = HEIGHT;
   let xPos = 0;
@@ -24,7 +20,7 @@ function draw() {
   while( squareWidth > 0 ){
 
     itr++;
-    if( !isEven( itr ) ){
+    if( isOdd( itr ) ){
 
       // If iteration number is odd, add square in x-axis direction.
       while( xPos + squareWidth <= WIDTH ){
@@ -57,3 +53,7 @@ const isEven = ( number ) => {
   return ( number % 2 === 0 );
 }
 
+// The number is odd or not.
+const isOdd = ( number ) => {
+  return ( number % 2 === 1 );
+}
