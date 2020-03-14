@@ -10,20 +10,35 @@ function setup() {
   
 }
 
+
+let sliderNumA;
+let sliderNumB;
+let sliderThreashold;
+
 let numDrawnRect = 0;
 let threashold = 160;
 let numA = 10;
 let numB =  6;
 let ratio = numB / numA;
+let isCaptureImage = false;
 
 function draw() {
 
-  background( 1, 0, 1 );
+  background( 100, 0, 100 );
+  numA = sliderNumA.value();
+  numB = sliderNumB.value();
+  threashold = sliderThreashold.value();
+
   ratio = numB / numA;
   numDrawnRect = 0;
 
   if( ratio != 1 ){
     divSquare( 0, 0, WIDTH );
+  }
+
+  if( isCaptureImage ){
+    disableCaptureImage();
+    captureImage();
   }
 
   drawControllerCaptions();
@@ -145,18 +160,23 @@ const captureImage = () => {
   saveCanvas( namePNG, 'png' );
 }
 
-let sliderNumA;
-let sliderNumB;
-let sliderThreashold;
+const enableCaptureImage = () => {
+  isCaptureImage = true;
+}
+
+const disableCaptureImage = () => {
+  isCaptureImage = false;
+}
+
 const controller = () => {
 
   sliderNumA = createSlider( 1, 40, 10 );
   sliderNumA.position( 10, 10 );
 
-  sliderNumB = createSlider( 1, 40, 10 );
+  sliderNumB = createSlider( 1, 40, 6 );
   sliderNumB.position( 10, 50 );
 
-  sliderThreashold = createSlider( 1, 40, 10 );
+  sliderThreashold = createSlider( 10, 300, 100 );
   sliderThreashold.position( 10, 90 );
 
   const btChangeColor = createButton('CHANGE COLOR');
@@ -167,15 +187,17 @@ const controller = () => {
   const btCaptureImage = createButton('CAPTURE IMAGE');
   btCaptureImage.position( 10, 170 );
   btCaptureImage.size( 130, 20 );
-  btCaptureImage.mousePressed( captureImage );
+  btCaptureImage.mousePressed( enableCaptureImage );
 
 }
 
 const drawControllerCaptions = () => {
-  fill( color('rgba( 0, 0, 0, 0.7)') );
+  noStroke();
+  fill( color('rgba( 0, 0, 0, 0.3)') );
   rect( 0, 0, sliderNumA.x * 2 + sliderNumA.width + 125 , 205);
   fill( 255 );
   text('numA: ' + sliderNumA.value(), sliderNumA.x * 2 + sliderNumA.width, 25);
   text('numB: ' + sliderNumB.value(), sliderNumB.x * 2 + sliderNumB.width, 65);
   text('Threashold: ' + sliderThreashold.value(), sliderThreashold.x * 2 + sliderThreashold.width, 105);
+  stroke( 12 );
 }
