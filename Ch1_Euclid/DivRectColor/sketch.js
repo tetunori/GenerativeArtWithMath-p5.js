@@ -1,19 +1,20 @@
 
-const WIDTH = 500;
+const CANVAS_WIDTH = 1000; 
+
+const SCALAR = 50;
+const WIDTH  = 9 * SCALAR;
+const HEIGHT =  38 * SCALAR;
+
 
 function setup() {
 
-  createCanvas( WIDTH, WIDTH );
+  createCanvas( WIDTH + 10, HEIGHT + 10 );
   colorMode( HSB, 100 );
   noLoop();
   
 }
 
 function draw() {
-
-  const SCALAR = 50;
-  const WIDTH  = 10 * SCALAR;
-  const HEIGHT =  6 * SCALAR;
 
   let squareWidth = HEIGHT;
   let xPos = 0;

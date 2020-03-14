@@ -1,18 +1,19 @@
 
-const WIDTH = 500;
+const CANVAS_WIDTH = 1000; 
+const WIDTH = 400;
 
+const numA = 9;
+const numB = 38;
+const RATIO = numB / numA;
 function setup() {
 
-  createCanvas( WIDTH, WIDTH );
+  createCanvas( WIDTH, WIDTH * RATIO );
   colorMode( HSB, 100 );
   noLoop();
   
 }
 
 
-const numA = 10;
-const numB =  6;
-const RATIO = numB / numA;
 
 function draw() {
 

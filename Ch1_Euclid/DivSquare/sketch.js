@@ -1,9 +1,10 @@
 
+const CANVAS_WIDTH = 1000; 
 const WIDTH = 500;
 
 function setup() {
 
-  createCanvas( WIDTH, WIDTH );
+  createCanvas( CANVAS_WIDTH, CANVAS_WIDTH );
   colorMode( HSB, 100 );
   noLoop();
   
@@ -11,8 +12,8 @@ function setup() {
 
 function draw() {
 
-  const numA = 10;
-  const numB =  6;
+  const numA = 17;
+  const numB = 12;
   const RATIO = numB / numA;
 
   let squareWidth = WIDTH;
@@ -20,13 +21,13 @@ function draw() {
   let yPos = 0;
   let itr = 0;
 
-  while( squareWidth > 0 ){
+  while( squareWidth > 0.1 ){
 
     itr++;
     if( !isEven( itr ) ){
 
       // If iteration number is odd, add square in x-axis direction.
-      while( xPos + squareWidth * RATIO <= WIDTH + 0.1 ){
+      while( xPos + squareWidth * RATIO < WIDTH + 0.1 ){
         
         const col = color( random( 100 ), 100, 100 );
         fill( col );
@@ -39,7 +40,7 @@ function draw() {
     }else{
 
       // If iteration number is even, add square in y-axis direction.
-      while ( yPos + squareWidth / RATIO <= WIDTH + 0.1 ){
+      while ( yPos + squareWidth / RATIO < WIDTH + 0.1 ){
 
         const col = color( random( 100 ), 100, 100 );
         fill( col );

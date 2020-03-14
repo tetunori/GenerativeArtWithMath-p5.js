@@ -28,7 +28,7 @@ function draw() {
     if( !isEven( itr ) ){
 
       // If iteration number is odd, add square in x-axis direction.
-      while( xPos + squareWidth * RATIO <= WIDTH + 0.1 ){
+      while( xPos + squareWidth * RATIO < WIDTH + 0.1 ){
         
         const col = color( random( 100 ), 100, 100 );
         fill( col );
@@ -41,7 +41,7 @@ function draw() {
     }else{
 
       // If iteration number is even, add square in y-axis direction.
-      while ( yPos + squareWidth / RATIO <= WIDTH + 0.1 ){
+      while ( yPos + squareWidth / RATIO < WIDTH + 0.1 ){
 
         const col = color( random( 100 ), 100, 100 );
         fill( col );

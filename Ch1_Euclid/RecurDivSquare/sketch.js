@@ -1,3 +1,4 @@
+const CANVAS_WIDTH = 1000; 
 
 const WIDTH = 500;
 
@@ -16,7 +17,7 @@ let ratio = numB / numA;
 
 function draw() {
 
-  divRect( 0, 0, WIDTH );
+  divSquare( 0, 0, WIDTH );
   
 }
 
@@ -29,8 +30,8 @@ function mouseClicked() {
   }
 
   threashold = Math.floor( random( 10, 300 ) );
-  console.log( 'numA =' + numA + ', numB =' + numB + ', threashold =' + threashold ); 
-  ratio = numA / numB;  // ぎゃくじゃね？
+  console.log( 'numA = ' + numA + ', numB = ' + numB + ', threashold = ' + threashold ); 
+  ratio = numB / numA;
   background( 0, 0, 100 );
   divSquare( 0, 0, WIDTH );
 
@@ -40,9 +41,10 @@ function mouseClicked() {
 // Divide a square whose length is width at ( xPosition, yPosition ) with some rectangles whose ratio is numA:numB.
 const divSquare = ( xPosition, yPosition, wd ) => {
 
-  let squareWidth = wd;
-  let xPos = xPosition;
-  let yPos = yPosition;
+  let squareWidth = normalizeNumber( wd );
+  let xPos = normalizeNumber( xPosition );
+  let yPos = normalizeNumber( yPosition );
+
   const xEndPos = squareWidth + xPos;
   const yEndPos = squareWidth + yPos;
   let itr = 0;
@@ -50,8 +52,8 @@ const divSquare = ( xPosition, yPosition, wd ) => {
   const col = color( random( 100 ), 100, 100 );
   fill( col );
   rect( xPos, yPos, squareWidth, squareWidth );
-
-  while( squareWidth > threashold ){
+  
+  while( squareWidth > threashold + 0.1 ){
 
     itr++;
     if( !isEven( itr ) ){
@@ -82,10 +84,10 @@ const divSquare = ( xPosition, yPosition, wd ) => {
 
 // Divide a rectangle whose width is 'width' at ( xPosition, yPosition ) with some squares.
 const divRect = ( xPosition, yPosition, wd ) => {
+  let squareWidth = normalizeNumber( wd );
+  let xPos = normalizeNumber( xPosition );
+  let yPos = normalizeNumber( yPosition );
 
-  let squareWidth = wd;
-  let xPos = xPosition;
-  let yPos = yPosition;
   const xEndPos = squareWidth + xPos;
   const yEndPos = squareWidth / ratio + yPos;
   let itr = 0;
@@ -94,7 +96,7 @@ const divRect = ( xPosition, yPosition, wd ) => {
   fill( col );
   rect( xPos, yPos, squareWidth, squareWidth / ratio );
 
-  while( squareWidth > threashold ){
+  while( squareWidth > threashold + 0.1 ){
 
     itr++;
     if( isEven( itr ) ){
@@ -128,3 +130,15 @@ const isEven = ( number ) => {
   return ( number % 2 === 0 );
 }
 
+const normalizeNumber = ( num ) => {
+
+  const ROUND_OFF_THREASHOLD = 0.001
+
+  const numRounded = Math.round( num )
+  if( Math.abs( num - numRounded ) < ROUND_OFF_THREASHOLD ){
+    return numRounded;
+  }else{
+    return num;
+  }
+
+}

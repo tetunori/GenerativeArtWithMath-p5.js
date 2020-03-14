@@ -1,9 +1,10 @@
 
+const CANVAS_WIDTH = 1000; 
 const WIDTH = 500;
 
 function setup() {
 
-  createCanvas( WIDTH, WIDTH );
+  createCanvas( CANVAS_WIDTH, CANVAS_WIDTH );
   colorMode( HSB, 100 );
   noLoop();
   
