@@ -9,7 +9,7 @@
 
 ## 1-2. P.064
 The figure of the case `thr = 320` seems to be wrong and a correct figure is like below.   
-<img src="./1-2.png" width="300px">
+<img src="./images/1-2.png" width="300px">
 
 ## 1-3. Ch1_Euclid::RecurDivSquare
 ### 1-3-1. divRect.pde::Line 9
@@ -52,9 +52,9 @@ If the current behavior is correct, we should change function's name like below.
 
 ## 3-1. Ch3_Fibonacci::P.086
 ### 3-1-1. Fomula in the middle of this page
-<img src="./3-1-1_before.png" width="200px"><BR>
+<img src="./images/3-1-1_before.png" width="200px"><BR>
 =>  
-<img src="./3-1-1_after.png" width="200px">
+<img src="./images/3-1-1_after.png" width="200px">
 
 
 
