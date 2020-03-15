@@ -26,11 +26,12 @@ function draw() {
     if( isOdd( itr ) ){
 
       // If iteration number is odd, add square in x-axis direction.
-      while( xPos + squareWidth * RATIO < WIDTH + 0.1 ){
+      const nextWidth = squareWidth * RATIO;
+      while( xPos + nextWidth < WIDTH + 0.1 ){
         
         fill( getRandomColor() );
-        rect( xPos, yPos, squareWidth * RATIO, squareWidth );
-        xPos += squareWidth * RATIO;
+        rect( xPos, yPos, nextWidth, squareWidth );
+        xPos += nextWidth;
 
       }
       squareWidth = WIDTH - xPos;
@@ -38,11 +39,12 @@ function draw() {
     }else{
 
       // If iteration number is even, add square in y-axis direction.
-      while ( yPos + squareWidth / RATIO < WIDTH + 0.1 ){
+      const nextHeight = squareWidth / RATIO;
+      while ( yPos + nextHeight < WIDTH + 0.1 ){
 
         fill( getRandomColor() );
-        rect( xPos, yPos, squareWidth, squareWidth / RATIO );
-        yPos += squareWidth / RATIO;
+        rect( xPos, yPos, squareWidth, nextHeight );
+        yPos += nextHeight;
         
       }
       squareWidth = WIDTH - yPos;

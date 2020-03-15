@@ -1,10 +1,10 @@
 
-const CANVAS_WIDTH = 1000; 
-const WIDTH = 400;
-
-const numA = 9;
-const numB = 38;
+const numA = 10;
+const numB =  6;
 const RATIO = numB / numA;
+
+const WIDTH = 500;
+
 function setup() {
 
   createCanvas( WIDTH, WIDTH * RATIO );
@@ -13,8 +13,6 @@ function setup() {
   
 }
 
-
-
 function draw() {
 
   let squareWidth = WIDTH * RATIO;
@@ -22,16 +20,14 @@ function draw() {
   let yPos = 0;
   let itr = 0;
 
-  colorMode( HSB, 100 );
-
   while( squareWidth > 0.1 ){
 
     itr++;
-    if( !isEven( itr ) ){
+    if( isOdd( itr ) ){
 
       while( xPos + squareWidth < WIDTH + 0.1 ){
         
-        divSquare( xPos, yPos, squareWidth );
+        divSquare( xPos, yPos, squareWidth, RATIO );
         xPos += squareWidth;
 
       }
@@ -41,7 +37,7 @@ function draw() {
 
       while ( yPos + squareWidth < WIDTH * RATIO + 0.1 ){
 
-        divSquare( xPos, yPos, squareWidth );
+        divSquare( xPos, yPos, squareWidth, RATIO );
         yPos += squareWidth;
         
       }
@@ -52,52 +48,3 @@ function draw() {
   }
 
 }
-
-// Divide a square whose length is width at ( xPosition, yPosition ) with some rectangles whose ratio is numA:numB.
-const divSquare = ( xPosition, yPosition, width ) => {
-
-  let squareWidth = width;
-  let xPos = xPosition;
-  let yPos = yPosition;
-  const xEndPos = squareWidth + xPos;
-  const yEndPos = squareWidth + yPos;
-  let itr = 0;
-
-  while( squareWidth > 0.1 ){
-
-    itr++;
-    if( !isEven( itr ) ){
-
-      while( xPos + squareWidth * RATIO < xEndPos + 0.1 ){
-        
-        const col = color( random( 100 ), 100, 100 );
-        fill( col );
-        rect( xPos, yPos, squareWidth * RATIO, squareWidth );
-        xPos += squareWidth * RATIO;
-
-      }
-      squareWidth = xEndPos - xPos;
-
-    }else{
-
-      while ( yPos + squareWidth / RATIO < yEndPos + 0.1 ){
-
-        const col = color( random( 100 ), 100, 100 );
-        fill( col );
-        rect( xPos, yPos, squareWidth, squareWidth / RATIO );
-        yPos += squareWidth / RATIO;
-        
-      }
-      squareWidth = yEndPos - yPos;
-
-    }
-
-  }
-
-}
-
-// The number is even or not.
-const isEven = ( number ) => {
-  return ( number % 2 === 0 );
-}
-
