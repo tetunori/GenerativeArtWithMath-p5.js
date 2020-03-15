@@ -50,5 +50,12 @@ If the current behavior is correct, we should change function's name like below.
 `reload()` etc..
 (I think the former is a better idea because we are in the file "color.pde".)
 
+## 3-1. Ch3_Fibonacci::P.086
+### 3-1-1. Fomula in the middle of this page
+<img src="./3-1-1_before.png" width="200px"><BR>
+=>  
+<img src="./3-1-1_after.png" width="200px">
+
+
 
 
