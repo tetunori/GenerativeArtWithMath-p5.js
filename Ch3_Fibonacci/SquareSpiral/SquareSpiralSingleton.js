@@ -1,17 +1,24 @@
 
 const WIDTH = 500;
-const HEGITH = 500;
+const HEIGHT = 500;
 
 function setup() {
 
-  createCanvas( WIDTH, WIDTH );
+  createCanvas( WIDTH, HEIGHT );
   colorMode( HSB, 100 );
   showLatestFibonacciValue();
   noLoop();
-  
 }
 
-function draw() { drawSpiral(); }
+function draw() {
+  
+  // Traslate effect will never be reset in this code
+  translate( WIDTH / 2, HEIGHT / 2 );
+
+  // Initial drawing
+  drawSpiral( WIDTH ); 
+  
+}
 
 function mouseClicked() {
   
@@ -19,42 +26,45 @@ function mouseClicked() {
   getNextFibonacci( true );
 
   // Then draw spiral square
-  drawSpiral();
+  drawSpiral( WIDTH );
 
   // Show some values on console
   showLatestFibonacciValue();
 
 }
 
-const drawSpiral = () => {
+// Draw sqiares with spiral
+const drawSpiral = ( width ) => {
 
-  const SGN = [ -1, 1, 1, -1 ];
   let xPos = 0;
   let yPos = 0;
-  const scalar = WIDTH / ( 2 * getLatestFibonacciNum() );
+  const scalar = width / ( 2 * getLatestFibonacciNum() );
 
   background( 'white' );
-
-  // Move to the center of the window
-  translate( WIDTH / 2, HEGITH / 2 );
 
   const targetArray = gArrayFibonacci;
   targetArray.forEach( ( element, index ) => {
 
     if( ( index > 0 ) && ( index < targetArray.length - 1 ) ){
 
+      const nextIndex = index + 1;
+
       // Change the colors in order
       fill( ( 10 * index ) % 100, 100, 100 );
 
       // Draw rect
       rect( scalar * xPos, scalar * yPos,
-              scalar * SGN[(index+1) % 4] * element, scalar * SGN[index % 4] * element );
+              scalar * getSign( nextIndex ) * element,
+                scalar * getSign( index )  * element );
 
       // Move xPos, yPos
+      const shiftValue = getSign( index ) * ( element + targetArray[ nextIndex ] );
+
+      // Shift position
       if( isOdd( index ) ){
-        xPos += SGN[index % 4] * (element + targetArray[index + 1]);
+        xPos += shiftValue;
       }else{
-        yPos += SGN[index % 4] * (element + targetArray[index + 1]);
+        yPos += shiftValue;
       }
 
     }
@@ -63,13 +73,21 @@ const drawSpiral = () => {
 
 }
 
+// Return appropriate sign value against index
+const getSign = ( index ) => {
+
+  const signArray = [ -1, 1, 1, -1 ];
+  return signArray[ index % 4 ];
+
+} 
+
+// Show latest Fibonacci number
 const gArrayFibonacci = [ 0, 1, 1 ];
 const showLatestFibonacciValue = () => {
 
   const targetArray = gArrayFibonacci;
   const latestIndex = targetArray.length - 1;
 
-  // Show latest Fibonacci number
   let text = 'Fibonacci: ' + targetArray[ latestIndex ];
 
   if( targetArray.length > 2 ){

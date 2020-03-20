@@ -16,7 +16,7 @@ function draw() {
   translate( WIDTH / 2, HEIGHT / 2 );
 
   // Initial drawing
-  drawSpiral( WIDTH ); 
+  drawRect( WIDTH ); 
   
 }
 
@@ -26,10 +26,9 @@ function mouseClicked() {
   getNextFibonacci( true );
 
   // Then draw spiral square
-  drawSpiral( WIDTH );
+  drawRect( WIDTH );
 
   // Show some values on console
   showLatestFibonacciValue();
 
 }
-

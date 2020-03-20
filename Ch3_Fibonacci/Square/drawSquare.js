@@ -1,9 +1,9 @@
 
-const drawSquare = () => {
+const drawSquare = ( width ) => {
 
   let xPos = 0;
   let yPos = 0;
-  const scalar = WIDTH / getNextFibonacci( false );
+  const scalar = width / getNextFibonacci( false );
 
   background( 'white' );
 

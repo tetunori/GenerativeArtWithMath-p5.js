@@ -10,7 +10,7 @@ function setup() {
   
 }
 
-function draw() { drawSquare(); }
+function draw() { drawSquare( WIDTH ); }
 
 function mouseClicked() {
   
@@ -18,9 +18,10 @@ function mouseClicked() {
   getNextFibonacci( true );
 
   // Then draw square
-  drawSquare();
+  drawSquare( WIDTH );
 
   // Show some values on console
   showLatestFibonacciValue();
 
 }
+

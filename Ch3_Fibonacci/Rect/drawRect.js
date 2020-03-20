@@ -1,57 +1,34 @@
 
-const WIDTH = 500;
-
-function setup() {
-
-  createCanvas( WIDTH, WIDTH );
-  colorMode( HSB, 100 );
-  showLatestFibonacciValue();
-  noLoop();
-  
-}
-
-function draw() { drawSquare( WIDTH ); }
-
-function mouseClicked() {
-  
-  // Generate next Fibonacci number
-  getNextFibonacci( true );
-
-  // Then draw square
-  drawSquare( WIDTH );
-
-  // Show some values on console
-  showLatestFibonacciValue();
-
-}
-
-const drawSquare = ( width ) => {
+// Draw rects with spiral
+const drawRect = ( width ) => {
 
   let xPos = 0;
   let yPos = 0;
-  const scalar = width / getNextFibonacci( false );
+  const scalar = width / ( 2 * getLatestFibonacciNum() );
 
   background( 'white' );
 
   const targetArray = gArrayFibonacci;
   targetArray.forEach( ( element, index ) => {
 
-    if( index > 0 ){
+    if( ( index > 0 ) && ( index < targetArray.length - 1 ) ){
+
+      const previousIndex = index - 1;
+      const nextIndex = index + 1;
 
       // Change the colors in order
       fill( ( 10 * index ) % 100, 100, 100 );
 
       // Draw rect
       rect( scalar * xPos, scalar * yPos,
-              scalar * element, scalar * element );
+              scalar * getSign( nextIndex ) * targetArray[ previousIndex ],
+                scalar * getSign( index )  * element );
 
-      // Move xPos, yPos
+      // Shift position
       if( isOdd( index ) ){
-        xPos += element;
-        yPos -= targetArray[ index - 1 ];
+        xPos += getSign( index ) * ( element + targetArray[ previousIndex ] );
       }else{
-        xPos -= targetArray[ index - 1 ];
-        yPos += element;
+        yPos += getSign( index ) * ( element + targetArray[ nextIndex ] );
       }
 
     }
@@ -60,13 +37,21 @@ const drawSquare = ( width ) => {
 
 }
 
-const gArrayFibonacci = [ 0, 1 ];
+// Return appropriate sign value against index
+const getSign = ( index ) => {
+
+  const signArray = [ -1, 1, 1, -1 ];
+  return signArray[ index % 4 ];
+
+} 
+
+// Show latest Fibonacci number
+const gArrayFibonacci = [ 0, 1, 1, 2 ];
 const showLatestFibonacciValue = () => {
 
   const targetArray = gArrayFibonacci;
   const latestIndex = targetArray.length - 1;
 
-  // Show latest Fibonacci number
   let text = 'Fibonacci: ' + targetArray[ latestIndex ];
 
   if( targetArray.length > 2 ){
@@ -94,6 +79,11 @@ const getNextFibonacci = ( isRegister ) => {
 
   return nextFibonacciNum;
 
+}
+
+// Get latest fibonacci number
+const getLatestFibonacciNum = () => {
+  return gArrayFibonacci[ gArrayFibonacci.length - 1 ];
 }
 
 // The number is odd or not.
