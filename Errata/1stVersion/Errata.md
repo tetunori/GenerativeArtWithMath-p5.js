@@ -9,7 +9,7 @@
 
 ## 1-2. P.064
 The figure of the case `thr = 320` seems to be wrong and a correct figure is like below.   
-<img src="./1-2.png" width="300px">
+<img src="./images/1-2.png" width="300px">
 
 ## 1-3. Ch1_Euclid::RecurDivSquare
 ### 1-3-1. divRect.pde::Line 9
@@ -50,5 +50,27 @@ If the current behavior is correct, we should change function's name like below.
 `reload()` etc..
 (I think the former is a better idea because we are in the file "color.pde".)
 
+## 3-1. Ch3_Fibonacci::P.086
+### 3-1-1. Fomula in the middle of this page
+<img src="./images/3-1-1_before.png" width="200px"><BR>
+=>  
+<img src="./images/3-1-1_after.png" width="200px">
 
+## 3-2. Ch3_Fibonacci::Rect
+### 3-2-1. Rect.pde::Line 1
+`int[] fibo = {0,1,1};`  
+=>  
+`int[] fibo = {0,1,1,2};`  
+Beucase we don't have to access to index 0.
+
+## 3-3. Ch3_Fibonacci::P.094
+### 3-3-1. Figures in 3.10
+All of the figures seem to be wrong.  
+The correct figures are the following ones.  
+| Case | Figure |
+| :-: | :-: |
+| num =  5, thr =  1 | <img src="./images/3-3-1-1.png" width="300px"> |
+| num =  7, thr =  2 | <img src="./images/3-3-1-2.png" width="300px"> |
+| num =  9, thr = 13 | <img src="./images/3-3-1-3.png" width="300px"> |
+| num = 11, thr =  4 | <img src="./images/3-3-1-4.png" width="300px"> |
 
