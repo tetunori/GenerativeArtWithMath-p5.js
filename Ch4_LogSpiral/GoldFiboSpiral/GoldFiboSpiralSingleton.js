@@ -6,43 +6,53 @@ function setup() {
 
   createCanvas( WIDTH, HEIGHT );
   colorMode( HSB, 100 );
-  showLatestFibonacciValue();
   noLoop();
-  
+
 }
 
 function draw() {
   
-  // Traslate effect will never be reset in this code
-  translate( WIDTH / 2, HEIGHT / 2 );
-
   // Initial drawing
-  drawSpiral( WIDTH ); 
-  
+  drawSpirals();
+
 }
 
 function mouseClicked() {
   
+  background( 'white' );
+  
   // Generate next Fibonacci number
   getNextFibonacci( true );
 
-  // Then draw spiral square
-  drawSpiral( WIDTH );
+  drawSpirals();
+
+}
+
+const drawSpirals = () => {
+
+  push();
+  translate( WIDTH / 2, HEIGHT / 2 );
+
+  stroke( 'black' );
+  drawFibonacciSpiral( WIDTH );
+
+  stroke( 'red' );
+  drawGoldSpiral( WIDTH );
+  
+  pop();
 
   // Show some values on console
   showLatestFibonacciValue();
 
 }
 
-// Draw sqiares with spiral
-const drawSpiral = ( width ) => {
+// Draw squares with Fibonacci spiral
+const drawFibonacciSpiral = ( width ) => {
 
   let xPos = 0;
   let yPos = 0;
   const scalar = width / ( 2 * getLatestFibonacciNum() );
-
-  background( 'white' );
-
+  
   const targetArray = gArrayFibonacci;
   targetArray.forEach( ( element, index ) => {
 
@@ -50,13 +60,21 @@ const drawSpiral = ( width ) => {
 
       const nextIndex = index + 1;
 
-      // Change the colors in order
-      fill( ( 10 * index ) % 100, 100, 100 );
-
-      // Draw rect
-      rect( scalar * xPos, scalar * yPos,
-              scalar * getSign( nextIndex ) * element,
-                scalar * getSign( index )  * element );
+      // Draw square
+      const rectX = scalar * xPos;
+      const rectY = scalar * yPos;
+      const rectWidth = scalar * getSign( nextIndex ) * element;
+      const rectHeight = scalar * getSign( index )  * element;
+      rect( rectX, rectY, rectWidth, rectHeight );
+      
+      // Draw arc
+      const arcX = rectX + rectWidth;
+      const arcY = rectY + rectHeight;
+      const arcWidth = scalar * 2 * element;
+      const arcHeight = scalar * 2 * element;
+      const arcStart = ( 1 + index ) * Math.PI / 2;
+      const arcStop = arcStart + Math.PI / 2;
+      arc( arcX, arcY, arcWidth, arcHeight, arcStart, arcStop );
 
       // Move xPos, yPos
       const shiftValue = getSign( index ) * ( element + targetArray[ nextIndex ] );
@@ -71,6 +89,40 @@ const drawSpiral = ( width ) => {
     }
     
   });
+
+}
+
+// Draw squares with Gold spiral
+const drawGoldSpiral = ( width ) => {
+
+  const scalar = width / ( 2 * getLatestFibonacciNum() );
+  const PHI = ( 1 + Math.sqrt( 5 ) ) / 2;
+  const STEP = -Math.PI / 50;
+
+  const vectorO = createVector( 1, 1 );
+  let vectorV = createVector( 0, 1 );
+
+  const targetArray = gArrayFibonacci;
+  for( let index = 1; index < targetArray.length - 1; index++ ){
+
+    vectorV.add( getSign( index ) * targetArray[ index ], 
+                  getSign( index - 1 ) * targetArray[ index ] );
+  
+  }
+
+  vectorV.sub( vectorO );
+  vectorV.mult( scalar );
+  translate( scalar, scalar );
+
+  for( let index = 1; index < ( targetArray.length - 2 ) * 25; index++ ){
+    
+    const nextVectorV = vectorV.copy();
+    nextVectorV.rotate( STEP );
+    nextVectorV.mult( Math.pow( PHI, 2 * STEP / Math.PI ) );
+    line( vectorV.x, vectorV.y, nextVectorV.x, nextVectorV.y );
+    vectorV = nextVectorV;
+
+  }
 
 }
 
