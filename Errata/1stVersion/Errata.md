@@ -74,3 +74,28 @@ The correct figures are the following ones.
 | num =  9, thr = 13 | <img src="./images/3-3-1-3.png" width="300px"> |
 | num = 11, thr =  4 | <img src="./images/3-3-1-4.png" width="300px"> |
 
+## 5-1. Ch5_FermatSpiral::FermatSpiralLine
+### 5-1-1. drawRealCurve.pde::Line 1-7
+In `drawLine()`, the result shapes seems to be wrong if the specified `n` is an odd number.  
+So we should replace like below: 
+```
+  for(int i = 0; i <= n / 2; i++){
+      ......
+    line(v.x, v.y, -v.x, -v.y);
+  }
+```
+=>  
+```
+  for(int i = 0; i < n; i++){
+      ......
+    line(v.x, v.y, 0, 0);
+  }
+```
+
+## 5-2. Ch5_FermatSpiral::P.124, 125
+### 5-2-1. Figure 5.8, 5.9, 5.10
+The name of the code is wrong.  
+`FermatSpiral`  
+=>  
+`FermatSpiral2`
+
