@@ -99,3 +99,24 @@ The name of the code is wrong.
 =>  
 `FermatSpiral2`
 
+## 6-1. Ch6_Modular::Table
+### 6-1-1. Table.pde::Line 6-9
+The position of `// int num = (i * j) % mod;` looks hard to understand a little bit.
+```
+    int num = (i + j) % mod;
+    PVector v = new PVector(j, i);
+    v.mult(scalar);
+    // int num = (i * j) % mod;
+```
+=>  
+```
+    int num = (i + j) % mod;
+    // int num = (i * j) % mod;
+    PVector v = new PVector(j, i);
+    v.mult(scalar);
+```
+
+## 6-2. Ch6_Modular::TableVar
+### 6-2-1. TableVar.pde::Line 8-11
+Same as 6-1-1. 
+
