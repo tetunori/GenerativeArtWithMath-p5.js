@@ -57,9 +57,13 @@ jQuery(function($) {
 
 window.onload = () => {
 
-  setNavigatorText();
-  setContent();
-  setSideDrawer();
+  if( CHAPTER_NUM !== 0 ){
+
+    setNavigatorText();
+    setContent();
+    setSideDrawer();
+    
+  }
 
   // For getting file names
   // directoryNameArray.forEach( ( element, index ) => {
