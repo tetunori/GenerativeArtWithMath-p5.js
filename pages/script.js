@@ -60,7 +60,20 @@ window.onload = () => {
   setNavigatorText();
   setContent();
   setSideDrawer();
-  
+
+  // For getting file names
+  // directoryNameArray.forEach( ( element, index ) => {
+
+  //   if( element !== undefined ){
+
+  //     for( const code of codeNameArray[ index ] ){
+  //       console.log( '' + element + '-' + code );
+  //     }
+
+  //   }
+
+  // });
+
 }
 
 const setNavigatorText = () => {
@@ -116,7 +129,7 @@ const chapt1CodeNameArray =
   'Numeric', 
   'RectDivRect', 
   'RecurDivSquare', 
-  'RecurDivSquareGUI '
+  'RecurDivSquareGUI'
 ]; 
 
 const chapt2CodeNameArray =
@@ -227,7 +240,7 @@ const chapt13CodeNameArray =
   'Fibonacci', 
   'HexRhomb', 
   'Pythagoras', 
-  'SquareTriangle '
+  'SquareTriangle'
 ];
 
 const chapt14CodeNameArray =
@@ -235,7 +248,7 @@ const chapt14CodeNameArray =
   'PenroseTiling', 
   'RecurPentagon', 
   'RecurTriangle', 
-  'TriangularSpiral '
+  'TriangularSpiral'
 ]; 
 
 const codeNameArray = 

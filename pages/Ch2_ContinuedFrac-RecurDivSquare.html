@@ -1,0 +1,300 @@
+
+<!doctype html>
+<html>
+
+  <!-- Difference information -->
+  <script type="text/javascript">
+    const CHAPTER_NUM = 2;
+    const CODE_INDEX = 5;
+  </script>
+
+  <head>
+
+    <meta charset="utf-8">
+    <title>"Generative Art with Math" p5.js Samples</title>
+
+    <!-- Webapp settings -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favion -->
+    <link rel="icon" href="/pages/images/favicon.ico">
+
+    <!-- Web Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link href="https://cdn.muicss.com/mui-0.10.0/css/mui.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/pages/style.css" rel="stylesheet" type="text/css" />
+
+    <!-- Script -->
+    <script src="https://cdn.muicss.com/mui-0.10.0/js/mui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/pages/script.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Side Drawer Menu --> 
+    <div id="sidedrawer" class="mui--no-user-select">
+      <div id="sidedrawer-brand">
+        <a href="/"><img src="/pages/images/logo.png" width="240px"></a>
+      </div>
+      <div class="mui-divider"></div>
+      <ul id='sideDrawerContent'>
+        <li>
+          <strong>Chapter 1: 
+            <br>Euclidean Algorithm
+            <br>ユークリッドの互除法
+          </strong>
+          <ul>
+            <li><a href="/pages/Ch1_Euclid-DivRect.html">DivRect</a></li>
+            <li><a href="/pages/Ch1_Euclid-DivRectColor.html">DivRectColor</a></li>
+            <li><a href="/pages/Ch1_Euclid-DivSquare.html">DivSquare</a></li>
+            <li><a href="/pages/Ch1_Euclid-DivSquareRecorder.html">DivSquareRecorder</a></li>
+            <li><a href="/pages/Ch1_Euclid-Numeric.html">Numeric</a></li>
+            <li><a href="/pages/Ch1_Euclid-RectDivRect.html">RectDivRect</a></li>
+            <li><a href="/pages/Ch1_Euclid-RecurDivSquare.html">RecurDivSquare</a></li>
+            <li><a href="/pages/Ch1_Euclid-RecurDivSquareGUI.html">RecurDivSquareGUI</a></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Chapter 2: 
+            <br>Continued Fraction
+            <br>連分数
+          </strong>
+          <ul>
+            <li><a href="/pages/Ch2_ContinuedFrac-DivRect.html">DivRect</a></li>
+            <li><a href="/pages/Ch2_ContinuedFrac-DivRectZoom.html">DivRectZoom</a></li>
+            <li><a href="/pages/Ch2_ContinuedFrac-DivSquare.html">DivSquare</a></li>
+            <li><a href="/pages/Ch2_ContinuedFrac-GoldDivGUI.html">GoldDivGUI</a></li>
+            <li><a href="/pages/Ch2_ContinuedFrac-Mondrian.html">Mondrian</a></li>
+            <li><a href="/pages/Ch2_ContinuedFrac-RecurDivSquare.html">RecurDivSquare</a></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Chapter 3: 
+            <br>Fibonacci Sequence
+            <br>フィボナッチ数列
+          </strong>
+          <ul>
+            <li><a href="/pages/Ch3_Fibonacci-Convergent.html">Convergent</a></li>
+            <li><a href="/pages/Ch3_Fibonacci-Rect.html">Rect</a></li>
+            <li><a href="/pages/Ch3_Fibonacci-RecurDiv.html">RecurDiv</a></li>
+            <li><a href="/pages/Ch3_Fibonacci-RecurDivGUI.html">RecurDivGUI</a></li>
+            <li><a href="/pages/Ch3_Fibonacci-Spiral.html">Spiral</a></li>
+            <li><a href="/pages/Ch3_Fibonacci-Square.html">Square</a></li>
+            <li><a href="/pages/Ch3_Fibonacci-SquareSpiral.html">SquareSpiral</a></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Chapter 4: 
+            <br>Logarithmic Spiral
+            <br>対数らせん
+          </strong>
+          <ul>
+            <li><a href="/pages/Ch4_LogSpiral-GoldFiboSpiral.html">GoldFiboSpiral</a></li>
+            <li><a href="/pages/Ch4_LogSpiral-LogSpiralZoom.html">LogSpiralZoom</a></li>
+            <li><a href="/pages/Ch4_LogSpiral-RecurPolygon.html">RecurPolygon</a></li>
+            <li><a href="/pages/Ch4_LogSpiral-RecurSquare.html">RecurSquare</a></li>
+            <li><a href="/pages/Ch4_LogSpiral-RecurSquareSpiral.html">RecurSquareSpiral</a></li>
+            <li><a href="/pages/Ch4_LogSpiral-Spiral.html">Spiral</a></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Chapter 5: 
+            <br>Fermat's Spiral
+            <br>フェルマーらせん
+          </strong>
+          <ul>
+            <li><a href="/pages/Ch5_FermatSpiral-FermatSpiral.html">FermatSpiral</a></li>
+            <li><a href="/pages/Ch5_FermatSpiral-FermatSpiral2.html">FermatSpiral2</a></li>
+            <li><a href="/pages/Ch5_FermatSpiral-FermatSpiralLine.html">FermatSpiralLine</a></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Chapter 6: 
+            <br>Modular Arithmetic
+            <br>合同な数
+          </strong>
+          <ul>
+            <li><a href="/pages/Ch6_Modular-Power.html">Power</a></li>
+            <li><a href="/pages/Ch6_Modular-PowerVar.html">PowerVar</a></li>
+            <li><a href="/pages/Ch6_Modular-Table.html">Table</a></li>
+            <li><a href="/pages/Ch6_Modular-TableVar.html">TableVar</a></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Chapter 7: 
+            <br>Cellular Automaton
+            <br>セルオートマトン
+          </strong>
+          <ul>
+            <li><a href="/pages/Ch7_CellAutomata-CA1dim.html">CA1dim</a></li>
+            <li><a href="/pages/Ch7_CellAutomata-CA2dim.html">CA2dim</a></li>
+            <li><a href="/pages/Ch7_CellAutomata-ElemCA.html">ElemCA</a></li>
+            <li><a href="/pages/Ch7_CellAutomata-ModPascal.html">ModPascal</a></li>
+            <li><a href="/pages/Ch7_CellAutomata-Pascal.html">Pascal</a></li>
+            <li><a href="/pages/Ch7_CellAutomata-StochCA.html">StochCA</a></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Chapter 8: 
+            <br>Pattern Generated from Matrix
+            <br>行列の織りなす模様
+          </strong>
+          <ul>
+            <li><a href="/pages/Ch8_Textile-MatrixCalculator.html">MatrixCalculator</a></li>
+            <li><a href="/pages/Ch8_Textile-TextileGenerator.html">TextileGenerator</a></li>
+            <li><a href="/pages/Ch8_Textile-TextileRepeater.html">TextileRepeater</a></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Chapter 9: 
+            <br>Symmetry of Regular Polygon
+            <br>正多角形の対称性
+          </strong>
+          <ul>
+            <li><a href="/pages/Ch9_Symmetry-CubicBezier.html">CubicBezier</a></li>
+            <li><a href="/pages/Ch9_Symmetry-DihedralGroup.html">DihedralGroup</a></li>
+            <li><a href="/pages/Ch9_Symmetry-FundamentalDomain.html">FundamentalDomain</a></li>
+            <li><a href="/pages/Ch9_Symmetry-HigherBezier.html">HigherBezier</a></li>
+            <li><a href="/pages/Ch9_Symmetry-QuadBezier.html">QuadBezier</a></li>
+            <li><a href="/pages/Ch9_Symmetry-SymmetricShape.html">SymmetricShape</a></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Chapter 10: 
+            <br>Tiling with Regular Polygon
+            <br>正多角形によるタイリング
+          </strong>
+          <ul>
+            <li><a href="/pages/Ch10_Lattice-HexCA.html">HexCA</a></li>
+            <li><a href="/pages/Ch10_Lattice-HexTiling.html">HexTiling</a></li>
+            <li><a href="/pages/Ch10_Lattice-SquareTiling.html">SquareTiling</a></li>
+            <li><a href="/pages/Ch10_Lattice-TriangleTiling.html">TriangleTiling</a></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Chapter 11: 
+            <br>Transformation of Regular Tiling
+            <br>正則タイリングの変形
+          </strong>
+          <ul>
+            <li><a href="/pages/Ch11_Deformation-IH01.html">IH01</a></li>
+            <li><a href="/pages/Ch11_Deformation-IH01Koch.html">IH01Koch</a></li>
+            <li><a href="/pages/Ch11_Deformation-IH02.html">IH02</a></li>
+            <li><a href="/pages/Ch11_Deformation-IH02TV08.html">IH02TV08</a></li>
+            <li><a href="/pages/Ch11_Deformation-IH02TV08Koch.html">IH02TV08Koch</a></li>
+            <li><a href="/pages/Ch11_Deformation-IH41.html">IH41</a></li>
+            <li><a href="/pages/Ch11_Deformation-IH41Koch.html">IH41Koch</a></li>
+            <li><a href="/pages/Ch11_Deformation-Koch.html">Koch</a></li>
+            <li><a href="/pages/Ch11_Deformation-TV08.html">TV08</a></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Chapter 12: 
+            <br>Patterns with Periodicity and Symmetry
+            <br>周期性と対称性を持つ模様
+          </strong>
+          <ul>
+            <li><a href="/pages/Ch12_Pattern-P3.html">P3</a></li>
+            <li><a href="/pages/Ch12_Pattern-P31M.html">P31M</a></li>
+            <li><a href="/pages/Ch12_Pattern-P3M1.html">P3M1</a></li>
+            <li><a href="/pages/Ch12_Pattern-P6.html">P6</a></li>
+            <li><a href="/pages/Ch12_Pattern-P6M.html">P6M</a></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Chapter 13: 
+            <br>Periodic Tiling
+            <br>周期タイリング
+          </strong>
+          <ul>
+            <li><a href="/pages/Ch13_Periodic-Fibonacci.html">Fibonacci</a></li>
+            <li><a href="/pages/Ch13_Periodic-HexRhomb.html">HexRhomb</a></li>
+            <li><a href="/pages/Ch13_Periodic-Pythagoras.html">Pythagoras</a></li>
+            <li><a href="/pages/Ch13_Periodic-SquareTriangle.html">SquareTriangle</a></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Chapter 14: 
+            <br>Semi-Periodic Tiling
+            <br>準周期タイリング
+          </strong>
+          <ul>
+            <li><a href="/pages/Ch14_Aperiodic-PenroseTiling.html">PenroseTiling</a></li>
+            <li><a href="/pages/Ch14_Aperiodic-RecurPentagon.html">RecurPentagon</a></li>
+            <li><a href="/pages/Ch14_Aperiodic-RecurTriangle.html">RecurTriangle</a></li>
+            <li><a href="/pages/Ch14_Aperiodic-TriangularSpiral.html">TriangularSpiral</a></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Errata: 
+          </strong>
+          <ul>
+            <li>
+              <a href="https://github.com/tetunori/GenerativeArtWithMath-p5.js/blob/master/Errata/1stVersion/Errata.md" target="_blank">
+                1st version | 初版
+              </a> ( <i class="fas fa-external-link-alt"></i>)
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    
+    <header id="header">
+      <div class="mui-appbar mui--appbar-line-height">
+        <div class="mui-container-fluid">
+
+          <!-- Menu burger --> 
+          <a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer">
+            <i class="material-icons googleIcons">menu</i> 
+          </a>
+          <a class="sidedrawer-toggle mui--hidden-xs mui--hidden-sm js-hide-sidedrawer">
+            <i class="material-icons googleIcons">menu</i>
+          </a>
+          
+          <!-- Navigator --> 
+          <span class="mui--text-title mui--hidden-xs mui--hidden-sm js-hide-sidedrawer">
+            <a id='navigatorChapter1' href="/pages/Ch1_Euclid-DivRect.html">Chapter 1</a>
+            <i class="material-icons googleIcons">navigate_next</i>
+            <a id='navigatorCodeName' href="/pages/Ch1_Euclid-DivRect.html">DivRect</a> 
+          </span>
+          <span id='navigatorChapter2' href="/pages/Ch1_Euclid-DivRect.html" class="mui--text-title mui--visible-xs-inline-block mui--visible-sm-inline-block">
+            Chapter 1
+          </span>
+
+        </div>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="mui--appbar-height"></div>
+      <div class="mui-container-fluid">
+        <div id='chapterDesc'>PEuclidean Algorithm | ユークリッドの互除法</div>
+        <div id='titleName'>DivRect</div>
+        <div class="mui-panel">
+          <iframe id='canvasFrame' src="/Ch1_Euclid/DivRect/" frameborder="0" width="100%" height="510"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <footer id="footer">
+      <div class="mui-container-fluid">
+        <br>
+        Hosted on GitHub. Version 0.5.0. Copyright (c) 2020 Tetsunori NAKAYAMA. MIT License. 
+        <br>
+        This is an <b>UNOFFICIAL</b> project. Original source codes are from 
+        <a href="https://gihyo.jp/book/2019/978-4-297-10463-4" target="_blank">
+          "Generative Art with Math" | "数学から創るジェネラティブアート"
+        </a>
+        by Gijutsu-Hyohron Co., Ltd.
+      </div>
+    </footer>
+
+  </body>
+
+</html>
