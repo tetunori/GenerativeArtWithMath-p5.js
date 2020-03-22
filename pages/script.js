@@ -103,6 +103,9 @@ const setContent = () => {
   canvasFrame.src = '/' + directoryNameArray[ CHAPTER_NUM ] + '/' + 
                                   codeNameArray[ CHAPTER_NUM ][ CODE_INDEX ] + '/';
 
+  const chapterDesc = document.getElementById( 'chapterDesc' );
+  chapterDesc.innerText = chapterDesciptionArray[ CHAPTER_NUM ];
+
 }
 
 const setSideDrawer = () => {
@@ -288,3 +291,23 @@ const directoryNameArray =
   'Ch13_Periodic',
   'Ch14_Aperiodic'  
 ];
+
+const chapterDesciptionArray = 
+[
+  undefined, // Dummy
+  'Euclidean Algorithm | ユークリッドの互除法',
+  'Continued Fraction | 連分数',
+  'Fibonacci Sequence | フィボナッチ数列',
+  'Logarithmic Spiral | 対数らせん',
+  "Fermat's Spiral | フェルマーらせん",
+  'Modular Arithmetic | 合同な数',
+  'Cellular Automaton | セルオートマトン',
+  'Pattern Generated from Matrix | 行列の織りなす模様',
+  'Symmetry of Regular Polygon | 正多角形の対称性',
+  'Tiling with Regular Polygon | 正多角形によるタイリング',
+  'Transformation of Regular Tiling | 正則タイリングの変形',
+  'Patterns with Periodicity and Symmetry | 周期性と対称性を持つ模様',
+  'Periodic Tiling | 周期タイリング',
+  'Semi-Periodic Tiling | 準周期タイリング'
+];
+
