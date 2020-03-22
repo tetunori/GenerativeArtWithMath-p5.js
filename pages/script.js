@@ -84,7 +84,7 @@ const setNavigatorText = () => {
   
   const navigatorChapter1 = document.getElementById( 'navigatorChapter1' );
   navigatorChapter1.innerText = 'Chapter ' + CHAPTER_NUM;
-  navigatorChapter1.href = '/pages/' + directoryNameArray[ CHAPTER_NUM ] + '-' + 
+  navigatorChapter1.href = './' + directoryNameArray[ CHAPTER_NUM ] + '-' + 
                                   codeNameArray[ CHAPTER_NUM ][ 0 ] + '.html'; 
   
   const navigatorChapter2 = document.getElementById( 'navigatorChapter2' );
@@ -93,7 +93,7 @@ const setNavigatorText = () => {
 
   const navigatorCodeName = document.getElementById( 'navigatorCodeName' );
   navigatorCodeName.innerText = codeNameArray[ CHAPTER_NUM ][ CODE_INDEX ];
-  navigatorCodeName.href = '/pages/' + directoryNameArray[ CHAPTER_NUM ] + '-' + 
+  navigatorCodeName.href = './' + directoryNameArray[ CHAPTER_NUM ] + '-' + 
                                 codeNameArray[ CHAPTER_NUM ][ CODE_INDEX ] + '.html'; 
   
 }
@@ -104,8 +104,8 @@ const setContent = () => {
   titleName.innerText = codeNameArray[ CHAPTER_NUM ][ CODE_INDEX ];
 
   const canvasFrame = document.getElementById( 'canvasFrame' );
-  canvasFrame.src = '/' + directoryNameArray[ CHAPTER_NUM ] + '/' + 
-                                  codeNameArray[ CHAPTER_NUM ][ CODE_INDEX ] + '/';
+  canvasFrame.src = '../' + directoryNameArray[ CHAPTER_NUM ] + '/' + 
+                                  codeNameArray[ CHAPTER_NUM ][ CODE_INDEX ] + '/index.html';
 
   const chapterDesc = document.getElementById( 'chapterDesc' );
   chapterDesc.innerText = chapterDesciptionArray[ CHAPTER_NUM ];
