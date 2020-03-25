@@ -120,3 +120,37 @@ The position of `// int num = (i * j) % mod;` looks hard to understand a little 
 ### 6-2-1. TableVar.pde::Line 8-11
 Same as 6-1-1. 
 
+## 8-1. Ch8_Textile::TextileRepeater
+### 8-1-1. drawTable.pde::Line 2
+`noStroke();` should be moved to just before TextileRepeater.pde::Line 25  
+so that we can use same file in TextileGenerator and improve efficiency a little bit.
+
+### 8-1-2. drawTable.pde::Line 9-10
+The initialization below is not invalid  
+because following `randomize()` will replace these values soon.
+```
+color colorTate = color(255, 255, 0);  //タテ糸の色(黄)
+color colorYoko = color(255, 0, 0);  //ヨコ糸の色(赤)
+```
+=>
+```
+color colorTate;
+color colorYoko;
+```
+
+### 8-1-3. drawTable.pde::Line 24
+`strokeWeight(1);` is invalid due to `noStroke()` in `drawTable()`.  
+Please delete it.
+
+### 8-1-4. drawTable.pde::Line 24
+Following codes are invalid due to `noStroke()` in `drawTable()`.
+```
+strokeWeight(3);
+line(0, scalar * columnA, width, scalar * columnA); //罫線の描画
+line(scalar * columnA, 0, scalar * columnA, height);
+```
+If these lines are needed, insert `stroke( BLACK );` just before `strokeWeight(3);`.  
+Otherwise, delete these lines.  
+In my opinion, I prefer `grey` line with `strokeWeight(1)`;
+
+
