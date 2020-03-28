@@ -153,4 +153,10 @@ If these lines are needed, insert `stroke( BLACK );` just before `strokeWeight(3
 Otherwise, delete these lines.  
 In my opinion, I prefer `grey` line with `strokeWeight(1)`;
 
+## 9-1. Ch9_Symmetry::CubicBezier
+### 9-1-1. getVertex.pde
+This file name seems to be wrong.
+`getVertex.pde`
+=>
+`getMidPoint.pde`
 
