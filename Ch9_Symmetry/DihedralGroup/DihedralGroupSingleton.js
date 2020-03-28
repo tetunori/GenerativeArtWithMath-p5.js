@@ -92,7 +92,7 @@ const toggleImage = () => {
 
 const setGonNumber = () => {
 
-  gGon = getSlidergGonValue();
+  gGon = getSliderGonValue();
   if( gImageIndex !== 0 ){
     gImageIndex = 0;
     gImage = loadImage( FILE_NAMES[ gImageIndex ], () => {
@@ -198,10 +198,10 @@ const drawNumbers = ( scalar ) => {
 
 }
 
-let gSlidergGon;
+let gSliderGon;
 
 // Set up all controllers 
-const setupController = ( initgGon ) => {
+const setupController = ( initGon ) => {
 
   const controllerOffset = 20;
   const controllerMargin = 40;
@@ -233,10 +233,10 @@ const setupController = ( initgGon ) => {
   // Slider Settings
   const minNumSlider = 3;
   const maxNumSlider = 20;
-  gSlidergGon = createSlider( minNumSlider, maxNumSlider, initgGon );
-  gSlidergGon.position( controllerOffset + WIDTH, btReset.y + controllerMargin );
-  gSlidergGon.mouseMoved( setGonNumberMouse );
-  gSlidergGon.touchMoved( setGonNumber );
+  gSliderGon = createSlider( minNumSlider, maxNumSlider, initGon );
+  gSliderGon.position( controllerOffset + WIDTH, btReset.y + controllerMargin );
+  gSliderGon.mouseMoved( setGonNumberMouse );
+  gSliderGon.touchMoved( setGonNumber );
 
 }
 
@@ -255,9 +255,9 @@ const drawGonNumber = () => {
   
   text( description, 
           controllerOffset + WIDTH / 2, 
-          gSlidergGon.y + controllerMargin - HEIGHT / 2 );
+          gSliderGon.y + controllerMargin - HEIGHT / 2 );
   
 }
 
 // Getter
-const getSlidergGonValue = () => { return gSlidergGon.value(); }
+const getSliderGonValue = () => { return gSliderGon.value(); }

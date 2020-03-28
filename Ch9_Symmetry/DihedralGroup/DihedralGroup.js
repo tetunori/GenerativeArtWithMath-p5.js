@@ -92,7 +92,7 @@ const toggleImage = () => {
 
 const setGonNumber = () => {
 
-  gGon = getSlidergGonValue();
+  gGon = getSliderGonValue();
   if( gImageIndex !== 0 ){
     gImageIndex = 0;
     gImage = loadImage( FILE_NAMES[ gImageIndex ], () => {
