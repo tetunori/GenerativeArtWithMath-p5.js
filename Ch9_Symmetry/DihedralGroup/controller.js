@@ -1,6 +1,8 @@
 
+let gSlidergGon;
+
 // Set up all controllers 
-const setupController = () => {
+const setupController = ( initgGon ) => {
 
   const controllerOffset = 20;
   const controllerMargin = 40;
@@ -29,4 +31,34 @@ const setupController = () => {
   btReset.size( buttonWidth, buttonHeight );
   btReset.mousePressed( resetImage );
 
+  // Slider Settings
+  const minNumSlider = 3;
+  const maxNumSlider = 20;
+  gSlidergGon = createSlider( minNumSlider, maxNumSlider, initgGon );
+  gSlidergGon.position( controllerOffset + WIDTH, btReset.y + controllerMargin );
+  gSlidergGon.mouseMoved( setGonNumberMouse );
+  gSlidergGon.touchMoved( setGonNumber );
+
 }
+
+// Draw GON number 
+const drawGonNumber = () => {
+
+  const controllerOffset = 20;
+  const controllerMargin = 40;
+  
+  // Text
+  fill( color( 'black' ) );
+  textSize( 14 );
+
+  let description = 'Gon value: ' + gGon;
+  description += '\n"TOGGLE IMAGE" \n is valid only if Gon=6.';
+  
+  text( description, 
+          controllerOffset + WIDTH / 2, 
+          gSlidergGon.y + controllerMargin - HEIGHT / 2 );
+  
+}
+
+// Getter
+const getSlidergGonValue = () => { return gSlidergGon.value(); }
