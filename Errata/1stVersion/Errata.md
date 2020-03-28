@@ -160,3 +160,7 @@ This file name seems to be wrong.
 =>
 `getMidPoint.pde`
 
+## 9-2. Ch9_Symmetry::P.213
+### 9-2-1. Figure 9.11
+There are 4 mistakes on the description of the figures like below.
+Ex. `num = 6` => `gon = 6`. 
