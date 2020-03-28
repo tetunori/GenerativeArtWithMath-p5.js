@@ -16,6 +16,8 @@ const drawShape = ( scalar ) => {
     // Draw numbers near the vertex
     drawNumbers( scalar );
 
+    // Draw Gon Number
+    drawGonNumber();
   pop();
 
 }
@@ -32,7 +34,7 @@ const drawImage = () => {
     scale( 1, gReflectionParameter );
 
     // Consider rotation
-    rotate( gRotationParameter * 2 * Math.PI / GON );
+    rotate( gRotationParameter * 2 * Math.PI / gGon );
 
     // Draw Image
     image( gImage, 0, 0 );
@@ -47,9 +49,9 @@ const drawDihedral = ( scalar ) => {
   noFill();
   beginShape();
 
-    for( let idVertex = 0; idVertex < GON; idVertex++ ){
+    for( let idVertex = 0; idVertex < gGon; idVertex++ ){
 
-      const vector = p5.Vector.fromAngle( 2 * Math.PI * idVertex / GON );
+      const vector = p5.Vector.fromAngle( 2 * Math.PI * idVertex / gGon );
       vector.mult( scalar );
       vertex( vector.x, vector.y );
 
@@ -65,11 +67,11 @@ const drawNumbers = ( scalar ) => {
   fill( color( 'white' ) );
   textSize( 20 );
 
-  for( let idVertex = 0; idVertex < GON; idVertex++ ){
+  for( let idVertex = 0; idVertex < gGon; idVertex++ ){
 
     // Calcurate position
-    const indexNumber = ( gReflectionParameter * idVertex - gRotationParameter + 2 * GON ) % GON;
-    const vector = p5.Vector.fromAngle( 2 * Math.PI * idVertex / GON );
+    const indexNumber = ( gReflectionParameter * idVertex - gRotationParameter + 2 * gGon ) % gGon;
+    const vector = p5.Vector.fromAngle( 2 * Math.PI * idVertex / gGon );
     vector.mult( scalar );
     
     // Draw text

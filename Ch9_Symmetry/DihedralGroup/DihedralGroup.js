@@ -7,7 +7,7 @@ const WIDTH_EXT = 200;
 
 let gImage;
 
-const GON = 6;
+let gGon = 6;
 const SCALAR = HEIGHT * 0.4;
 
 const FILE_NAMES = [
@@ -17,7 +17,7 @@ const FILE_NAMES = [
 ];
 
 let gReflectionParameter = 1; // 1 or -1
-let gRotationParameter = 0;   // From 0 to (GON - 1)
+let gRotationParameter = 0;   // From 0 to (gGon - 1)
 
 function preload() {
 
@@ -29,7 +29,7 @@ function preload() {
 function setup() {
 
   createCanvas( WIDTH + WIDTH_EXT, HEIGHT );
-  setupController();
+  setupController( gGon );
   
   drawShape( SCALAR );
 
@@ -61,7 +61,7 @@ const reflectImage = () => {
 
 const rotateImage = () => {
 
-  gRotationParameter = ( gRotationParameter + gReflectionParameter + GON ) % GON;
+  gRotationParameter = ( gRotationParameter + gReflectionParameter + gGon ) % gGon;
   drawShape( SCALAR );
   console.log( 'Rotate' );
  
@@ -76,12 +76,42 @@ const resetImage = () => {
  
 }
 
-let gImageIndex = 1;
+let gImageIndex = 0;
 const toggleImage = () => {
   
-  gImage = loadImage( FILE_NAMES[ gImageIndex ], () => {
-    resetImage();
-  } );
-  gImageIndex = ( gImageIndex + 1 ) % 3;
+  if( gGon === 6 ){
 
+    gImageIndex = ( gImageIndex + 1 ) % 3;
+    gImage = loadImage( FILE_NAMES[ gImageIndex ], () => {
+      resetImage();
+    } );
+
+  }
+  
+}
+
+const setGonNumber = () => {
+
+  gGon = getSliderGonValue();
+  if( gImageIndex !== 0 ){
+    gImageIndex = 0;
+    gImage = loadImage( FILE_NAMES[ gImageIndex ], () => {
+      resetImage();
+    } );
+  }else{
+    resetImage();
+  }
+  
+  drawShape( SCALAR );
+  
+}
+
+const setGonNumberMouse = () => {
+
+  if ( !mouseIsPressed ){
+    return;
+  }
+
+  setGonNumber();
+  
 }

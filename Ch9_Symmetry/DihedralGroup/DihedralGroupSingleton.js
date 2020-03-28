@@ -7,7 +7,7 @@ const WIDTH_EXT = 200;
 
 let gImage;
 
-const GON = 6;
+let gGon = 6;
 const SCALAR = HEIGHT * 0.4;
 
 const FILE_NAMES = [
@@ -17,7 +17,7 @@ const FILE_NAMES = [
 ];
 
 let gReflectionParameter = 1; // 1 or -1
-let gRotationParameter = 0;   // From 0 to (GON - 1)
+let gRotationParameter = 0;   // From 0 to (gGon - 1)
 
 function preload() {
 
@@ -29,7 +29,7 @@ function preload() {
 function setup() {
 
   createCanvas( WIDTH + WIDTH_EXT, HEIGHT );
-  setupController();
+  setupController( gGon );
   
   drawShape( SCALAR );
 
@@ -61,7 +61,7 @@ const reflectImage = () => {
 
 const rotateImage = () => {
 
-  gRotationParameter = ( gRotationParameter + gReflectionParameter + GON ) % GON;
+  gRotationParameter = ( gRotationParameter + gReflectionParameter + gGon ) % gGon;
   drawShape( SCALAR );
   console.log( 'Rotate' );
  
@@ -76,14 +76,44 @@ const resetImage = () => {
  
 }
 
-let gImageIndex = 1;
+let gImageIndex = 0;
 const toggleImage = () => {
   
-  gImage = loadImage( FILE_NAMES[ gImageIndex ], () => {
-    resetImage();
-  } );
-  gImageIndex = ( gImageIndex + 1 ) % 3;
+  if( gGon === 6 ){
 
+    gImageIndex = ( gImageIndex + 1 ) % 3;
+    gImage = loadImage( FILE_NAMES[ gImageIndex ], () => {
+      resetImage();
+    } );
+
+  }
+  
+}
+
+const setGonNumber = () => {
+
+  gGon = getSliderGonValue();
+  if( gImageIndex !== 0 ){
+    gImageIndex = 0;
+    gImage = loadImage( FILE_NAMES[ gImageIndex ], () => {
+      resetImage();
+    } );
+  }else{
+    resetImage();
+  }
+  
+  drawShape( SCALAR );
+  
+}
+
+const setGonNumberMouse = () => {
+
+  if ( !mouseIsPressed ){
+    return;
+  }
+
+  setGonNumber();
+  
 }
 
 // Draw Shapes including wireframe, number and image.
@@ -103,6 +133,8 @@ const drawShape = ( scalar ) => {
     // Draw numbers near the vertex
     drawNumbers( scalar );
 
+    // Draw Gon Number
+    drawGonNumber();
   pop();
 
 }
@@ -119,7 +151,7 @@ const drawImage = () => {
     scale( 1, gReflectionParameter );
 
     // Consider rotation
-    rotate( gRotationParameter * 2 * Math.PI / GON );
+    rotate( gRotationParameter * 2 * Math.PI / gGon );
 
     // Draw Image
     image( gImage, 0, 0 );
@@ -134,9 +166,9 @@ const drawDihedral = ( scalar ) => {
   noFill();
   beginShape();
 
-    for( let idVertex = 0; idVertex < GON; idVertex++ ){
+    for( let idVertex = 0; idVertex < gGon; idVertex++ ){
 
-      const vector = p5.Vector.fromAngle( 2 * Math.PI * idVertex / GON );
+      const vector = p5.Vector.fromAngle( 2 * Math.PI * idVertex / gGon );
       vector.mult( scalar );
       vertex( vector.x, vector.y );
 
@@ -152,11 +184,11 @@ const drawNumbers = ( scalar ) => {
   fill( color( 'white' ) );
   textSize( 20 );
 
-  for( let idVertex = 0; idVertex < GON; idVertex++ ){
+  for( let idVertex = 0; idVertex < gGon; idVertex++ ){
 
     // Calcurate position
-    const indexNumber = ( gReflectionParameter * idVertex - gRotationParameter + 2 * GON ) % GON;
-    const vector = p5.Vector.fromAngle( 2 * Math.PI * idVertex / GON );
+    const indexNumber = ( gReflectionParameter * idVertex - gRotationParameter + 2 * gGon ) % gGon;
+    const vector = p5.Vector.fromAngle( 2 * Math.PI * idVertex / gGon );
     vector.mult( scalar );
     
     // Draw text
@@ -166,8 +198,10 @@ const drawNumbers = ( scalar ) => {
 
 }
 
+let gSliderGon;
+
 // Set up all controllers 
-const setupController = () => {
+const setupController = ( initGon ) => {
 
   const controllerOffset = 20;
   const controllerMargin = 40;
@@ -196,4 +230,34 @@ const setupController = () => {
   btReset.size( buttonWidth, buttonHeight );
   btReset.mousePressed( resetImage );
 
+  // Slider Settings
+  const minNumSlider = 3;
+  const maxNumSlider = 20;
+  gSliderGon = createSlider( minNumSlider, maxNumSlider, initGon );
+  gSliderGon.position( controllerOffset + WIDTH, btReset.y + controllerMargin );
+  gSliderGon.mouseMoved( setGonNumberMouse );
+  gSliderGon.touchMoved( setGonNumber );
+
 }
+
+// Draw GON number 
+const drawGonNumber = () => {
+
+  const controllerOffset = 20;
+  const controllerMargin = 40;
+  
+  // Text
+  fill( color( 'black' ) );
+  textSize( 14 );
+
+  let description = 'Gon value: ' + gGon;
+  description += '\n"TOGGLE IMAGE" \n is valid only if Gon=6.';
+  
+  text( description, 
+          controllerOffset + WIDTH / 2, 
+          gSliderGon.y + controllerMargin - HEIGHT / 2 );
+  
+}
+
+// Getter
+const getSliderGonValue = () => { return gSliderGon.value(); }
