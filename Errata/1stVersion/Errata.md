@@ -173,5 +173,13 @@ This figure slightly differs from the result below.
 ### 10-2-1. tile.pde
 We don't need this file.
 
+## 10-3. Ch10_Lattice::P.214
+### 10-3-1. description
+`HexCA` program do not use function on mouse events.
+So please delete mouse-mark on this.
+
+
+
+
 
 
