@@ -1,13 +1,12 @@
 # Errata for 1st version( 2019/05/01 ).
 
-# Chapter 1
-## 1-1. P.055
+## 1-1. Ch1_Euclid::P.055
 ### 1-1-1. **Figure 1.6** :  
 `numA = 12, numB = 17`  
 =>  
 `numA = 17, numB = 12`  
 
-## 1-2. P.064
+## 1-2. Ch1_Euclid::P.064
 The figure of the case `thr = 320` seems to be wrong and a correct figure is like below.   
 <img src="./images/1-2.png" width="300px">
 
@@ -164,3 +163,23 @@ This file name seems to be wrong.
 ### 9-2-1. Figure 9.11
 There are 4 mistakes on the description of the figures like below.
 Ex. `num = 6` => `gon = 6`. 
+
+## 10-1. Ch10_Lattice::P.219
+### 10-1-1. Figure 10.5
+This figure slightly differs from the result below.  
+<img src="./images/10-1-1.png" width="300px">
+
+## 10-2. Ch10_Lattice::HexTiling
+### 10-2-1. tile.pde
+We don't need this file.
+
+## 10-3. Ch10_Lattice::P.214
+### 10-3-1. description
+`HexCA` program do not use function on mouse events.
+So please delete mouse-mark on this.
+
+
+
+
+
+
