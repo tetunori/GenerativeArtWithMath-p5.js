@@ -178,7 +178,12 @@ We don't need this file.
 `HexCA` program do not use function on mouse events.
 So please delete mouse-mark on this.
 
-
+## 11-1. Ch11_Deformation::TV08
+### 11-1-1. deformHex.pde::Line 6
+`v[i] = parameterizeTV08(v, i);`  
+=>  
+`parameterizeTV08(v, i);`  
+because `parameterizeTV08()` updates `v[i]` value in the function.
 
 
 
