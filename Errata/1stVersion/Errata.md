@@ -185,6 +185,12 @@ So please delete mouse-mark on this.
 `parameterizeTV08(v, i);`  
 because `parameterizeTV08()` updates `v[i]` value in the function.
 
+## 11-2. Ch11_Deformation::P.238
+### 11-2-1. text in seconde paragraph
+これは正六角形タイリングの`makeHex`関数  
+=>  
+これは正六角形タイリング`HexTiling`の`makeHex`関数  
+
 
 
 
