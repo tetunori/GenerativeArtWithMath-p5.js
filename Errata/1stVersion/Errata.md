@@ -191,6 +191,8 @@ because `parameterizeTV08()` updates `v[i]` value in the function.
 =>  
 これは正六角形タイリング`HexTiling`の`makeHex`関数  
 
-
+## 11-3. Ch11_Deformation::IH02TV08
+### 11-3-1. deformHex.pde::Line 6
+Same as 11-1-1. 
 
 
