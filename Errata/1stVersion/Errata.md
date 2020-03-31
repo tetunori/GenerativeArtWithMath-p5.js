@@ -178,8 +178,40 @@ We don't need this file.
 `HexCA` program do not use function on mouse events.
 So please delete mouse-mark on this.
 
+## 11-1. Ch11_Deformation::TV08
+### 11-1-1. deformHex.pde::Line 6
+`v[i] = parameterizeTV08(v, i);`  
+=>  
+`parameterizeTV08(v, i);`  
+because `parameterizeTV08()` updates `v[i]` value in the function.
 
+## 11-2. Ch11_Deformation::P.238
+### 11-2-1. text in seconde paragraph
+これは正六角形タイリングの`makeHex`関数  
+=>  
+これは正六角形タイリング`HexTiling`の`makeHex`関数  
 
+## 11-3. Ch11_Deformation::IH02TV08
+### 11-3-1. deformHex.pde::Line 6
+Same as 11-1-1. 
 
+## 11-4. Ch11_Deformation::IH41Koch
+### 11-4-1. parameterizeIH41.pde
+We don't need this file.
 
+## 11-5. Ch11_Deformation::IH01Koch
+### 11-5-1. parameterizeIH01.pde
+We don't need this file.
+
+## 11-6. Ch11_Deformation::IH02TV08Koch
+### 11-6-1. parameterizeIH02.pde
+We don't need this file.
+
+## 11-7. Ch11_Deformation
+### 11-7-1. P.228 Description
+`IH02TV08Koch` needs an icon of `CP5` instead of `mouse`'s one.
+
+### 11-7-2. P.245 Figure 11.18
+The icon of the description for Lower-left figure `IH02TV08Koch` is wrong.
+Please change `mouse` icon to `CP5` icon.
 
