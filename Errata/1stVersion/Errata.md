@@ -215,3 +215,10 @@ We don't need this file.
 The icon of the description for Lower-left figure `IH02TV08Koch` is wrong.
 Please change `mouse` icon to `CP5` icon.
 
+## 12-1. Ch12_Pattern::P3
+### 12-1-1. Figure 12.9
+Lower-left figure has a non-periodic block like below.  
+<img src="./images/12-1-1.png" width="300px">
+
+The code might has a bug on this issue in the function `makeRhomb()` but I could not fix it.
+
