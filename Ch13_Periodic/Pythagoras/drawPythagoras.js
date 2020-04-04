@@ -10,8 +10,6 @@ const drawPythagoras = () => {
 
   }
 
-  // gGap = ( Math.sqrt( 5 ) - 1 ) / 2;
-
   const theta = Math.atan( gGap );
   const slope = p5.Vector.sub( vectorArray[ 1 ], vectorArray[ 0 ] );
   slope.rotate( theta );

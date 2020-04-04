@@ -1,4 +1,8 @@
 
+const setFibonacci = () => {
+    gSliderGap.value( ( Math.sqrt( 5 ) - 1 ) / 2 );
+}
+
 let gSliderGap;
 
 // Set up all controllers 
@@ -18,11 +22,16 @@ const setupController = ( initGap ) => {
   btCaptureImage.size( buttonWidth, buttonHeight );
   btCaptureImage.mousePressed( enableCaptureImage );
 
+  const btSetFibonacci = createButton( 'SET FIBONACCI' );
+  btSetFibonacci.position( controllerOffset, btCaptureImage.y + controllerMargin );
+  btSetFibonacci.size( buttonWidth, buttonHeight );
+  btSetFibonacci.mousePressed( setFibonacci );
+
   // Slider Settings
   const minGapSlider = 0;
   const maxGapSlider = 1;
   gSliderGap = createSlider( minGapSlider, maxGapSlider, initGap, 0.01 );
-  gSliderGap.position( controllerOffset, btCaptureImage.y + controllerMargin );
+  gSliderGap.position( controllerOffset, btSetFibonacci.y + controllerMargin );
 
   const btChangeColor = createButton( 'CHANGE COLOR' );
   btChangeColor.position( controllerOffset, gSliderGap.y + controllerMargin );
@@ -43,14 +52,14 @@ const drawControllerCaptions = () => {
   // Draw background
   fill( color( 'rgba( 0, 0, 0, 0.4 )' ) );
   const offset = 10;
-  const width = 285;
-  const height = 122;
+  const width = 235;
+  const height = 162;
   const cornerRound = 5;
   rect( offset, offset, width, height, cornerRound );
 
   // Draw captions
   fill( color( 'white' ) );
-  text( 'Gap: ' + getSliderGapValue(), gSliderGap.x * 1.5 + gSliderGap.width, 77 );
+  text( 'Gap: ' + getSliderGapValue(), gSliderGap.x * 1.5 + gSliderGap.width, 117 );
   
   // Revert stroke
   stroke( color( 'black' ) );
