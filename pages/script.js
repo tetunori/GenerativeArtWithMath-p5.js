@@ -236,7 +236,7 @@ const chapt11CodeNameArray =
 const chapt12CodeNameArray =
 [
   'P3', 
-  'P31M', 
+  'P31M',
   'P3M1', 
   'P6', 
   'P6M'
