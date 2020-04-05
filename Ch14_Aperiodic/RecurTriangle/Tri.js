@@ -8,7 +8,7 @@ class Tri {
     
   }
 
-  updateThinS() {
+  updateThinS = () => {
     
     const v_ = this.v_;
     const vector3 = p5.Vector.sub( v_[ 0 ], v_[ 2 ] );
@@ -20,16 +20,16 @@ class Tri {
 
   }
 
-  drawTriangle() {
+  drawTriangle = () => {
 
     const v_ = this.v_;
     triangle( v_[ 0 ].x, v_[ 0 ].y, 
               v_[ 1 ].x, v_[ 1 ].y, 
-              v_[ 2 ].x, v_[ 2 ].y );
+              v_[ 2 ].x, v_[ 2 ].y, );
     
   }
 
-  drawArc( radianEnd ) {
+  drawArc = ( radianEnd ) => {
 
     const v_ = this.v_;
     const diameter = 2 * p5.Vector.dist( v_[ 0 ], v_[ 2 ] );
