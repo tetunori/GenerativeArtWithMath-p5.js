@@ -225,3 +225,7 @@ The code might has a bug on this issue in the function `makeRhomb()` but I could
 ### 12-1-2. Figure 12.20
 As 12-1-1., All 4 figures have a non-periodic block like below.  
 <img src="./images/12-1-2.png" width="300px">
+
+## 13-1. Ch13_Periodic::HexRhomb
+### 13-1-1. tile.pde
+We don't need this file.
