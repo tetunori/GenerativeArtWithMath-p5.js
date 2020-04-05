@@ -1,7 +1,7 @@
 
-const drawTiling = () => {
+const drawTiling = ( colorArray, gap ) => {
 
-  fill( getRandomColor() );
+  background( colorArray[ 1 ] );
 
   for( const vectorArray of gLatticePoints ){
 
@@ -10,7 +10,7 @@ const drawTiling = () => {
       push();
         
         translate( vector.x, vector.y );
-        drawPythagoras();
+        drawSqTriangle( colorArray, gap );
 
       pop();
 
@@ -18,9 +18,4 @@ const drawTiling = () => {
 
   }
 
-}
-
-// Get random color
-const getRandomColor = () => {
-  return color( random( 100 ), 100, 100 );
 }

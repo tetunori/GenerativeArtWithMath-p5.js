@@ -1,6 +1,10 @@
 
 const setFibonacci = () => {
-    gSliderGap.value( ( Math.sqrt( 5 ) - 1 ) / 2 );
+  gSliderGap.value( ( Math.sqrt( 5 ) - 1 ) / 2 );
+}
+
+const randomizeGap = () => {
+  gSliderGap.value( random( 0, 1 ) );
 }
 
 let gSliderGap;
@@ -38,6 +42,16 @@ const setupController = ( initGap ) => {
   btChangeColor.size( buttonWidth, buttonHeight );
   btChangeColor.mousePressed( changeColor );
 
+  const btRandomize = createButton( 'RANDOMIZE ALL' );
+  btRandomize.position( controllerOffset, btChangeColor.y + controllerMargin );
+  btRandomize.size( buttonWidth, buttonHeight );
+  btRandomize.mousePressed( randomize );
+
+  const btToggleMode = createButton( 'TOGGLE MODE' );
+  btToggleMode.position( controllerOffset, btRandomize.y + controllerMargin );
+  btToggleMode.size( buttonWidth, buttonHeight );
+  btToggleMode.mousePressed( toggleMode );
+
 }
 
 // Getter
@@ -53,7 +67,7 @@ const drawControllerCaptions = () => {
   fill( color( 'rgba( 0, 0, 0, 0.4 )' ) );
   const offset = 10;
   const width = 235;
-  const height = 162;
+  const height = 242;
   const cornerRound = 5;
   rect( offset, offset, width, height, cornerRound );
 
@@ -114,3 +128,14 @@ const enableCaptureImage = () => {
 const disableCaptureImage = () => {
   gIsCaptureImage = false;
 }
+
+// Get random color
+const getRandomColor = () => {
+  return color( random( 100 ), 100, 100 );
+}
+
+// Get random color Low Saturation
+const getRandomColorLowSaturation = () => {
+  return color( random( 100 ), 40, 100 );
+}
+

@@ -10,6 +10,10 @@ const HEIGHT = 500;
 let scalar;
 let gGap = 0.5;
 
+const MODE_SQUARE_TRIANGLE = 0;
+const MODE_DUAL_PENTAGON = 0;
+let gMode = MODE_SQUARE_TRIANGLE;
+
 function setup() {
 
   createCanvas( WIDTH, HEIGHT );
@@ -24,9 +28,7 @@ const initialize = () => {
 
   scalar = HEIGHT * 1.0 / gNum;
 
-  gColorArray = [];
-  gColorArray.push( getRandomColor() );
-  gColorArray.push( getRandomColorLowSaturation() );
+  initializeColor();
   
   makeSqVector();
   makeSqLattice();
@@ -52,11 +54,20 @@ function draw() {
 
 }
 
-const changeColor = () => {
+const initializeColor = () => {
 
   gColorArray = [];
-  gColorArray.push( getRandomColor() );
   gColorArray.push( getRandomColorLowSaturation() );
+
+  for( let index = 0; index < 4; index++ ){
+    gColorArray.push( getRandomColor() );
+  }
+
+}
+
+const changeColor = () => {
+
+  initializeColor();
 
 }
 
@@ -67,9 +78,13 @@ const randomize = () => {
 
 }
 
+const toggleMode = () => {
+  gMode = ( gMode + 1 ) % 2;
+}
+
 const drawTiling = ( colorArray, gap ) => {
 
-  background( colorArray[ 0 ] );
+  background( colorArray[ 1 ] );
 
   for( const vectorArray of gLatticePoints ){
 
@@ -78,7 +93,7 @@ const drawTiling = ( colorArray, gap ) => {
       push();
         
         translate( vector.x, vector.y );
-        drawSqTriangle( colorArray[ 1 ], gap );
+        drawSqTriangle( colorArray, gap );
 
       pop();
 
@@ -108,7 +123,7 @@ const makeSqLattice = () => {
 
 }
 
-const drawSqTriangle = ( color, gap ) => {
+const drawSqTriangle = ( colorArray, gap ) => {
 
   const vectorArray = [];
   for( let index = 0; index < 4; index++ ){
@@ -126,7 +141,12 @@ const drawSqTriangle = ( color, gap ) => {
         push();
           scale( Math.pow( -1, idReflection ), Math.pow( -1, idReflection2 ) );
           translate( scalar / 4, scalar / 4 );
-          drawTriangle( vectorArray, color, gap );
+
+          if( gMode === MODE_SQUARE_TRIANGLE ){
+            drawTriangle( vectorArray, colorArray, gap );
+          }else{
+            drawPentagon( vectorArray, colorArray, gap );
+          }
         pop();
 
     }
@@ -135,7 +155,7 @@ const drawSqTriangle = ( color, gap ) => {
 
 }
 
-const drawTriangle = ( vectorArray, color, gap ) => {
+const drawTriangle = ( vectorArray, colorArray, gap ) => {
 
   const smallSqVectorArray = [];
   for( let index = 0; index < 4; index++ ){
@@ -148,7 +168,7 @@ const drawTriangle = ( vectorArray, color, gap ) => {
 
   }
 
-  fill( color );
+  fill( colorArray[ 0 ] );
   for( let index = 0; index < 4; index++ ){
 
     beginShape();
@@ -160,6 +180,52 @@ const drawTriangle = ( vectorArray, color, gap ) => {
       vertex( vector.x, vector.y );
 
       vector = smallSqVectorArray[ ( index + 3 ) % 4 ];
+      vertex( vector.x, vector.y );
+
+    endShape();
+
+  }
+
+}
+
+const drawPentagon = ( vectorArray, colorArray, gap ) => {
+
+  const smallSqVectorArray = [];
+  for( let index = 0; index < 4; index++ ){
+
+      const vector = p5.Vector.sub( vectorArray[ ( index + 1 ) % 4 ],
+                                      vectorArray[ index ] );
+      vector.mult( gap );
+      vector.add( vectorArray[ index ] );
+      smallSqVectorArray.push( vector );
+
+  }
+
+  const pentagonVectorArray = [];
+  const theta = atan( gap );
+  for( let index = 0; index < 4; index++ ){
+
+      const vector = p5.Vector.sub( vectorArray[ ( index + 1 ) % 4 ],
+                                      smallSqVectorArray[ index ] );
+      vector.mult( 0.5 / Math.pow( Math.cos( theta ), 2 ) );
+      vector.add( smallSqVectorArray[ index ] );
+      pentagonVectorArray.push( vector );
+
+  }
+
+  for( let index = 0; index < 4; index++ ){
+
+    fill( colorArray[ index + 1 ] );
+    beginShape();
+
+      let vector = vectorArray[ index ];
+      vertex( vector.x, vector.y );
+
+      vector = pentagonVectorArray[ ( index + 3 ) % 4 ];
+      vertex( vector.x, vector.y );
+      vertex( 0, 0 );
+
+      vector = pentagonVectorArray[ index ];
       vertex( vector.x, vector.y );
 
     endShape();
@@ -223,6 +289,11 @@ const setupController = ( initGap ) => {
   btRandomize.size( buttonWidth, buttonHeight );
   btRandomize.mousePressed( randomize );
 
+  const btToggleMode = createButton( 'TOGGLE MODE' );
+  btToggleMode.position( controllerOffset, btRandomize.y + controllerMargin );
+  btToggleMode.size( buttonWidth, buttonHeight );
+  btToggleMode.mousePressed( toggleMode );
+
 }
 
 // Getter
@@ -238,7 +309,7 @@ const drawControllerCaptions = () => {
   fill( color( 'rgba( 0, 0, 0, 0.4 )' ) );
   const offset = 10;
   const width = 235;
-  const height = 202;
+  const height = 242;
   const cornerRound = 5;
   rect( offset, offset, width, height, cornerRound );
 

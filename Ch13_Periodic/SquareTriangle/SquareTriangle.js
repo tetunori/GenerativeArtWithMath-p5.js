@@ -1,5 +1,5 @@
 
-let gNum = 10;
+const gNum = 5;
 const gLatticePoints = [];
 const gBaseVectors = [];
 let gColorArray = [];
@@ -9,6 +9,10 @@ const HEIGHT = 500;
 
 let scalar;
 let gGap = 0.5;
+
+const MODE_SQUARE_TRIANGLE = 0;
+const MODE_DUAL_PENTAGON = 0;
+let gMode = MODE_SQUARE_TRIANGLE;
 
 function setup() {
 
@@ -24,10 +28,8 @@ const initialize = () => {
 
   scalar = HEIGHT * 1.0 / gNum;
 
-  for( let index = 0; index < 2; index++ ){
-    gColorArray.push( getRandomColorLowSaturation() );
-  }
-
+  initializeColor();
+  
   makeSqVector();
   makeSqLattice();
 
@@ -37,7 +39,7 @@ function draw() {
 
   gGap = getSliderGapValue();
   
-  drawTiling(); 
+  drawTiling( gColorArray, gGap ); 
 
   if( isEnableCaptureImage() ){
 
@@ -52,16 +54,30 @@ function draw() {
 
 }
 
-const changeColor = () => {
+const initializeColor = () => {
 
   gColorArray = [];
-  for( let index = 0; index < 2; index++ ){
-    gColorArray.push( getRandomColorLowSaturation() );
+  gColorArray.push( getRandomColorLowSaturation() );
+
+  for( let index = 0; index < 4; index++ ){
+    gColorArray.push( getRandomColor() );
   }
 
 }
 
-// Get random color Low Saturation
-const getRandomColorLowSaturation = () => {
-  return color( random( 100 ), 40, 100 );
+const changeColor = () => {
+
+  initializeColor();
+
+}
+
+const randomize = () => {
+
+  randomizeGap();
+  changeColor();
+
+}
+
+const toggleMode = () => {
+  gMode = ( gMode + 1 ) % 2;
 }
