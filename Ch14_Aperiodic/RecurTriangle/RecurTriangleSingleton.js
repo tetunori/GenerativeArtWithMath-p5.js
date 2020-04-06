@@ -2,33 +2,80 @@
 const WIDTH = 500;
 const HEIGHT = 500;
 
+// For controller
+const WIDTH_EXT = 200;
+
 let gColorArray = [];
 let gListT = [];
 let gListF = [];
 
+const DIV_MODE_TSFL = 0;
+const DIV_MODE_TLFS = 1;
+const DIV_MODE_TSFS = 2;
+const DIV_MODE_TLFL = 3;
+let gModeDivision = DIV_MODE_TSFL;
+
+const INIT_MODE_TRIANGLE = 0;
+const INIT_MODE_PENTAGON = 1;
+let gModeInit = INIT_MODE_TRIANGLE;
+
 function setup() {
 
-  const myCanvas = createCanvas( WIDTH, HEIGHT );
-  myCanvas.touchStarted( mouseClicked );
+  const myCanvas = createCanvas( WIDTH + WIDTH_EXT, HEIGHT );
+  myCanvas.touchStarted( mouseClicked ); 
   colorMode( HSB, 100 );
-
-  initialize( 1200 );
-  // initializeDecagon( 1200 );
-  triangularDivision();
+  
+  setupController();
+  initialize();
 
 }
 
 function draw() {}
 
 function mouseClicked() {
-  triangularDivision();
+
+  if( ( mouseX < WIDTH ) && ( mouseY < HEIGHT ) ){
+    triangularDivision();
+  }
+
 }
 
-const initialize = ( scalar ) => {
+const toggleDivision = () => {
+
+  gModeDivision = ( gModeDivision + 1 ) % 4;
+  initialize();
+
+}
+
+const toggleInit = () => {
+
+  gModeInit = ( gModeInit + 1 ) % 2;
+  initialize();
+
+}
+
+const initialize = () => {
+
+  background( 'white' );
 
   gColorArray = [];
   gColorArray.push( getRandomColor() );
   gColorArray.push( getRandomColor() );
+
+  gListT = [];
+  gListF = [];
+
+  if( gModeInit === INIT_MODE_TRIANGLE ){
+    initializeTriangle( 1200 );
+  }else{
+    initializeDecagon( 250 );
+  }
+
+  triangularDivision();
+
+}
+
+const initializeTriangle = ( scalar ) => {
 
   const vectorArray = [];
   let vector = p5.Vector.fromAngle( 3 * Math.PI / 2 );
@@ -87,8 +134,12 @@ const triangularDivision = () => {
     for( triInstance of gListT ){
 
       triInstance.drawTriangle();
-      triInstance.divThinS( nextT, nextF );
-      // triInstance.divThinL( nextT, nextF );
+      if( ( gModeDivision === DIV_MODE_TSFL ) || 
+            ( gModeDivision === DIV_MODE_TSFS ) ){
+        triInstance.divThinS( nextT, nextF );
+      }else{
+        triInstance.divThinL( nextT, nextF );
+      }
 
     }
 
@@ -96,14 +147,29 @@ const triangularDivision = () => {
     for( triInstance of gListF ){
 
       triInstance.drawTriangle();
-      triInstance.divFatL( nextT, nextF );
-      // triInstance.divFatS( nextT, nextF );
+      if( ( gModeDivision === DIV_MODE_TSFL ) || 
+            ( gModeDivision === DIV_MODE_TLFL ) ){
+        triInstance.divFatL( nextT, nextF );
+      }else{
+        triInstance.divFatS( nextT, nextF );
+      }
 
     }
 
     gListT = nextT;
     gListF = nextF;
 
+  pop();
+
+  clipCanvas();
+
+}
+
+const clipCanvas = () => {
+
+  push();
+    noStroke();
+    rect( WIDTH, 0, WIDTH + WIDTH_EXT, HEIGHT );
   pop();
 
 }
@@ -213,3 +279,65 @@ class Tri {
   }
 
 }
+
+// Set up all controllers 
+const setupController = ( initNum ) => {
+
+  const controllerOffset = 20;
+  const controllerMargin = 40;
+
+  // Button Settings
+  const buttonWidth = 150;
+  const buttonHeight = 20;
+  const btCaptureImage = createButton( 'CAPTURE IMAGE' );
+  btCaptureImage.position( controllerOffset + WIDTH, controllerOffset + 20 );
+  btCaptureImage.size( buttonWidth, buttonHeight );
+  btCaptureImage.mousePressed( captureImage );
+
+  const btToggleDivision = createButton( 'TOGGLE DIVISION' );
+  btToggleDivision.position( controllerOffset + WIDTH, btCaptureImage.y + controllerMargin );
+  btToggleDivision.size( buttonWidth, buttonHeight );
+  btToggleDivision.mousePressed( toggleDivision );
+
+  const btToggleInit = createButton( 'TOGGLE INIT' );
+  btToggleInit.position( controllerOffset + WIDTH, btToggleDivision.y + controllerMargin );
+  btToggleInit.size( buttonWidth, buttonHeight );
+  btToggleInit.mousePressed( toggleInit );
+
+}
+
+// Capture Image
+const captureImage = () => {
+
+  const namePNG = getYYYYMMDD_hhmmss( true ) + '.png';
+  saveCanvas( namePNG, 'png' );
+
+}
+
+// get Timestamp string
+const getYYYYMMDD_hhmmss = ( isNeedUS ) => {
+
+  const now = new Date();
+  let retVal = '';
+
+  // YYMMDD
+  retVal += now.getFullYear();
+  retVal += padZero2Digit( now.getMonth() + 1 );
+  retVal += padZero2Digit( now.getDate() );
+
+  if( isNeedUS ){ retVal += '_'; }
+
+  // hhmmss
+  retVal += padZero2Digit( now.getHours() );
+  retVal += padZero2Digit( now.getMinutes() );
+  retVal += padZero2Digit( now.getSeconds() );
+
+  return retVal;
+
+}
+
+// padding function
+const padZero2Digit = ( num ) => {
+  return ( num < 10 ? "0" : "" ) + num;
+}
+
