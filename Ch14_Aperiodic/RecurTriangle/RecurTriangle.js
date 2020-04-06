@@ -16,7 +16,7 @@ const DIV_MODE_TLFL = 3;
 let gModeDivision = DIV_MODE_TSFL;
 
 const INIT_MODE_TRIANGLE = 0;
-const INIT_MODE_PENTAGON = 1;
+const INIT_MODE_DECAGON = 1;
 let gModeInit = INIT_MODE_TRIANGLE;
 
 function setup() {
