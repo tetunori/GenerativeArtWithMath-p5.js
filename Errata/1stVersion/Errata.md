@@ -282,3 +282,7 @@ void initializeDecagon(float scalar){ ... }
 ```
 Thus, we can only get decagon shape by only comment-out `initializeTriangle()` and un-comment-out `initializeDecagon()`.
 
+## 14-2. Ch14_Aperiodic::PenroseTiling
+### 14-2-1. PenroseTiling.pde::Line 7-8
+Same as 14-1-1.
+
