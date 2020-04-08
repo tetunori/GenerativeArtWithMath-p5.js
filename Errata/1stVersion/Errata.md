@@ -229,3 +229,60 @@ As 12-1-1., All 4 figures have a non-periodic block like below.
 ## 13-1. Ch13_Periodic::HexRhomb
 ### 13-1-1. tile.pde
 We don't need this file.
+
+## 14-1. Ch14_Aperiodic::RecurTriangle
+### 14-1-1. RecurTriangle.pde::Line 7-8
+It is hard to understand how to enable `initializeDecagon()` so I recommend a replacement like below.  
+Moreover, the parameter of initializeDecagon should be around 250 for showing whole decagon shape.
+
+```
+void setup(){
+  size(500, 500);
+  colorMode(HSB, 1);
+  initialize(1200);
+  // initializeDecagon(1200);
+  triangularDivision();
+}
+
+void initialize(float scalar){
+  col = new color[2];
+  col[0] = color(random(1), 1, 1); //細い三角形の色
+  col[1] = color(random(1), 1, 1);  //太い三角形の色
+  PVector v0 = PVector.fromAngle(3 * PI / 2);
+  ...
+}
+
+void initializeDecagon(float scalar){ ... }
+```
+=>  
+```
+void setup(){
+  size(500, 500);
+  colorMode(HSB, 1);
+  initialize();
+  triangularDivision();
+}
+
+void initialize(){
+  col = new color[2];
+  col[0] = color(random(1), 1, 1); //細い三角形の色
+  col[1] = color(random(1), 1, 1);  //太い三角形の色
+
+  initializeTriangle(1200);
+  // initializeDecagon(250);
+
+}
+
+void initializeTriangle(float scalar){ 
+  PVector v0 = PVector.fromAngle(3 * PI / 2);
+  ...
+}
+
+void initializeDecagon(float scalar){ ... }
+```
+Thus, we can only get decagon shape by only comment-out `initializeTriangle()` and un-comment-out `initializeDecagon()`.
+
+## 14-2. Ch14_Aperiodic::PenroseTiling
+### 14-2-1. PenroseTiling.pde::Line 7-8
+Same as 14-1-1.
+
