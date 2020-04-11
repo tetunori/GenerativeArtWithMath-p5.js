@@ -12,7 +12,8 @@ const setColor = () => {
     gRandomColorArray.push( random( 100 ) );
   }
   
-  fill( color( gRandomColorArray[ gColorCount ], 100, 100 ) );
+  // fill( color( gRandomColorArray[ gColorCount ], 100, 100 ) );
+  fill( color( gRandomColorArray[ gColorCount ], 40, 100 ) );
   gColorCount++;
   
 }

@@ -21,14 +21,14 @@ function draw() {
   
   translate( WIDTH / 2, HEIGHT / 2 );
   noStroke();
-
-  fill( 255, 0, 0, 127 ); // Red
+  
+  fill( 255, 0, 81, 127 ); // Red
   drawFermatSpiral( gIteration, gRotationAngleArray[0] );
-  fill( 0, 0, 255, 127  ); // Blue
+  fill( 0, 2, 128, 127  ); // Blue
   drawFermatSpiral( gIteration, gRotationAngleArray[1] );
 
   if( gRotationAngleArray.length > 2 ){
-    fill( 0, 255, 0, 127 ); // Green
+    fill( 0, 130, 0, 127 ); // Green
     drawFermatSpiral( gIteration, gRotationAngleArray[2] );
   }
 

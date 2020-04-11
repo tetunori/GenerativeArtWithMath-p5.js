@@ -64,7 +64,6 @@ const setupController = ( initNum ) => {
   const maxNumSlider = 40;
   gSliderNum = createSlider( minNumSlider, maxNumSlider, initNum );
   gSliderNum.position( controllerOffset, controllerOffset / 2 );
-  gSliderNum.mouseReleased( setSpiralMode );
 
   const btCaptureImage = createButton( 'CAPTURE IMAGE' );
   btCaptureImage.position( controllerOffset, gSliderNum.y + controllerMargin );

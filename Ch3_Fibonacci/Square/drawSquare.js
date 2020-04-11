@@ -13,7 +13,8 @@ const drawSquare = ( width ) => {
     if( index > 0 ){
 
       // Change the colors in order
-      fill( ( 10 * index ) % 100, 100, 100 );
+      // fill( ( 10 * index ) % 100, 100, 100 );
+      fill( ( 10 * index ) % 100, 40, 100 );
 
       // Draw rect
       rect( scalar * xPos, scalar * yPos,

@@ -8,7 +8,8 @@ const WIDTH = 500;
 
 function setup() {
 
-  createCanvas( WIDTH, WIDTH );
+  const myCanvas = createCanvas( WIDTH, WIDTH );
+  myCanvas.touchStarted( mouseClicked ); 
   colorMode( HSB, 100 );
   noLoop();
   
@@ -131,7 +132,8 @@ const isOdd = ( number ) => {
 
 // Get random color
 const getRandomColor = () => {
-  return color( random( 100 ), 100, 100 );
+  // return color( random( 100 ), 100, 100 );
+  return color( random( 100 ), 40, 100 );
 }
 
 // Get random integer between min and max

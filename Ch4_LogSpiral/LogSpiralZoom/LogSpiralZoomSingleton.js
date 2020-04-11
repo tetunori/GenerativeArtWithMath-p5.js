@@ -4,7 +4,8 @@ const HEIGHT = 500;
 
 function setup() {
 
-  createCanvas( WIDTH, WIDTH );
+  const myCanvas = createCanvas( WIDTH, WIDTH );
+  myCanvas.touchStarted( getPointerX ); 
   colorMode( HSB, 100 );
   
 }
@@ -19,7 +20,7 @@ function draw() {
 const drawLogSpiral = ( width, height ) => {
 
   let theta = 0;
-  const scalar = Math.pow( 10, mouseX / width ) * height / 2;
+  const scalar = Math.pow( 10, getPointerX() / width ) * height / 2;
   const step = 2 * Math.PI * 0.01;
 
   translate( width / 2, height / 2 );
@@ -34,6 +35,16 @@ const drawLogSpiral = ( width, height ) => {
 
     theta -= step;
 
+  }
+
+}
+
+const getPointerX = () => {
+
+  if( touches[0] ){
+    return touches[0].x;
+  }else{
+    return mouseX;
   }
 
 }

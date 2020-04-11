@@ -74,7 +74,7 @@ const drawTable = ( modulo, width ) => {
       if( gModeVisual === VISUAL_MODE_COLORED ){
 
         // Draw color dot
-        fill( num * 100 / modulo, 100, 100 );
+        fill( num * 100 / modulo, 100, 90 );
         noStroke();
         ellipse( vector.x, vector.y, scalar / 2, scalar / 2 );
 
@@ -88,7 +88,7 @@ const drawTable = ( modulo, width ) => {
       }else if( gModeVisual === VISUAL_MODE_COLORED_SCALE ){
 
         // Draw black dot
-        fill( num * 100 / modulo, 100, 100 );
+        fill( num * 100 / modulo, 100, 90 );
         noStroke();
         const size = scalar * num / modulo;
         ellipse( vector.x, vector.y, size, size );

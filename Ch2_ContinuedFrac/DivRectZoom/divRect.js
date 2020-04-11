@@ -8,7 +8,8 @@ const divRect = ( xPos, yPos, squareWidth, ratio ) => {
   while( squareWidth > 0.1 ){
 
     itr++;
-    fill( color( ( itr * ratio ) % 1, 1, 1 ) );
+    // fill( color( ( itr * ratio ) % 1, 1, 1 ) );
+    fill( color( ( itr * ratio ) % 1, 0.4, 1 ) );
 
     if( isEven( itr ) ){
 

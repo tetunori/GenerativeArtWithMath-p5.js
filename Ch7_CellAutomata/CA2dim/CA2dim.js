@@ -25,7 +25,7 @@ function setup() {
 function draw() {
 
   background( 'white' );
-  gModulo = getSliderModuloValue();
+  setModuloValue();
   drawCell( gMaxGenerationNum, gStateArray, gModulo, HEIGHT );
   updateState();
 

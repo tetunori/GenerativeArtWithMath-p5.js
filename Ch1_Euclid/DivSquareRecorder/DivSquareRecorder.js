@@ -69,7 +69,8 @@ const isOdd = ( number ) => {
 
 // Get random color
 const getRandomColor = () => {
-  return color( random( 100 ), 100, 100 );
+  // return color( random( 100 ), 100, 100 );
+  return color( random( 100 ), 40, 100 );
 }
 
 // Capture image on canvas.

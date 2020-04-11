@@ -18,7 +18,11 @@ const disableCaptureImage = () => {
 
 let gSliderModulo;
 
-const onChangeModuloValue = () => {
+const setModuloValue = () => {
+
+  if( gModulo === getSliderModuloValue() ){
+    return;
+  }
 
   initialize();
   gModulo = getSliderModuloValue();
@@ -41,7 +45,6 @@ const setupController = ( initModulo ) => {
   const maxNumSlider = 10;
   gSliderModulo = createSlider( minNumSlider, maxNumSlider, initModulo );
   gSliderModulo.position( controllerOffset, controllerOffset );
-  gSliderModulo.mouseReleased( onChangeModuloValue );
 
   // Button Settings
   const buttonWidth = 150;
