@@ -8,7 +8,8 @@ let gUpperLimit = 0;
 
 function setup() {
 
-  createCanvas( WIDTH, HEIGHT );
+  const myCanvas = createCanvas( WIDTH, HEIGHT );
+  myCanvas.touchStarted( mouseClicked ); 
   colorMode( HSB, 100 );
 
   gVector1 = createVector( 0, HEIGHT / 2 );

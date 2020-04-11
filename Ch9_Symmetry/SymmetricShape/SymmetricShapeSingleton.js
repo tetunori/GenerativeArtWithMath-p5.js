@@ -39,7 +39,8 @@ const drawShape = () => {
   // Initialize control point array
   controlPoints = [];
 
-  fill( color( random(100), 100, 100 ) );
+  // fill( color( random(100), 100, 100 ) );
+  fill( color( random(100), 40, 100 ) );
   stroke( 'black' );
   strokeWeight( 1 );
 

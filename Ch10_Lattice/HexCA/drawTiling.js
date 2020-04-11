@@ -26,9 +26,13 @@ const drawTiling = () => {
 // Set tile color
 const setTileColor = ( idRow, idColumn ) => {
 
-  fill( color( gStateMatrix[idRow][idColumn] * 100.0 / gModulo, 
-               gStateMatrix[idRow][idColumn] * 100.0 / gModulo, 
-               100 ) );
+  const colorParam = gStateMatrix[ idRow ][ idColumn ] * 100.0 / gModulo;
+  
+  if( colorParam < 1 ){
+    fill( colorParam, colorParam, 100 );
+  }else{
+    fill( colorParam, colorParam, 90 );
+  }
   
 }
 
