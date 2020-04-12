@@ -9,14 +9,15 @@ const drawTiling = () => {
     randomArray[ index ] = random( -1, 1 );
   }
 
-  for( const vectorArray of gLatticePoints ){
+  for( const [ index, vectorArray ] of gLatticePoints.entries() ){
 
     for( const vector of vectorArray ){
 
       push();
         
         translate( vector.x, vector.y );
-        drawPatternP3( randomArray );
+        drawPatternP3( randomArray, 
+                          index === ( gLatticePoints.length - 1 ) );
 
       pop();
 

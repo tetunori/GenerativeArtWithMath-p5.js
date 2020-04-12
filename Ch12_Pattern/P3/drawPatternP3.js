@@ -1,14 +1,17 @@
 
-const drawPatternP3 = ( randomArray) => {
+const drawPatternP3 = ( randomArray, isLast ) => {
 
-    for( let index = 0; index < 3; index++ ){
+  let startIndex = 0;
+  if( isLast ){ startIndex = 2; }
 
-      push();
-        rotate( 2 * Math.PI * index / 3 );
-        drawRhomboid( randomArray );
-      pop();
+  for( let index = startIndex; index < 3; index++ ){
 
-    }
+    push();
+      rotate( 2 * Math.PI * index / 3 );
+      drawRhomboid( randomArray );
+    pop();
+
+  }
 
 }
 

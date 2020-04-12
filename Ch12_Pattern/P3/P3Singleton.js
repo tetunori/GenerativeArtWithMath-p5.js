@@ -55,14 +55,15 @@ const drawTiling = () => {
     randomArray[ index ] = random( -1, 1 );
   }
 
-  for( const vectorArray of gLatticePoints ){
+  for( const [ index, vectorArray ] of gLatticePoints.entries() ){
 
     for( const vector of vectorArray ){
 
       push();
         
         translate( vector.x, vector.y );
-        drawPatternP3( randomArray );
+        drawPatternP3( randomArray, 
+                          index === ( gLatticePoints.length - 1 ) );
 
       pop();
 
@@ -89,7 +90,7 @@ const makeLattice = () => {
 
   const m = Math.ceil( gNum / gBaseVectors[ 1 ].x );
 
-  for( let idRow = 0; idRow < gNum + 1; idRow ++ ){
+  for( let idRow = 0; idRow < gNum + 2; idRow ++ ){
 
     const vectorArray = [];
     for( let idColumn = 0; idColumn < m + 1; idColumn++ ){
@@ -107,16 +108,19 @@ const makeLattice = () => {
 
 }
 
-const drawPatternP3 = ( randomArray) => {
+const drawPatternP3 = ( randomArray, isLast ) => {
 
-    for( let index = 0; index < 3; index++ ){
+  let startIndex = 0;
+  if( isLast ){ startIndex = 2; }
 
-      push();
-        rotate( 2 * Math.PI * index / 3 );
-        drawRhomboid( randomArray );
-      pop();
-      
-    }
+  for( let index = startIndex; index < 3; index++ ){
+
+    push();
+      rotate( 2 * Math.PI * index / 3 );
+      drawRhomboid( randomArray );
+    pop();
+    
+  }
 
 }
 

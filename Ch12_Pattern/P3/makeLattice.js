@@ -3,7 +3,7 @@ const makeLattice = () => {
 
   const m = Math.ceil( gNum / gBaseVectors[ 1 ].x );
 
-  for( let idRow = 0; idRow < gNum + 1; idRow ++ ){
+  for( let idRow = 0; idRow < gNum + 2; idRow ++ ){
 
     const vectorArray = [];
     for( let idColumn = 0; idColumn < m + 1; idColumn++ ){
