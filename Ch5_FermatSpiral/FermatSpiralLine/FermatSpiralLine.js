@@ -17,18 +17,20 @@ function setup() {
   push();
     translate( WIDTH / 2, HEIGHT / 2 );
 
-    stroke( 'blue' );
+    stroke( color( 94, 100, 100 ) );
     drawLine( gNum, WIDTH );
 
-    stroke( 'red' );
+    stroke( color( 66, 100, 50 ) );
     drawRealFermatCurve( gRotationAngle, WIDTH );
   pop();
 
 }
 
 function draw() {
-  
+
   translate( WIDTH / 2, HEIGHT / 2 );
+  
+  setSpiralMode();
   noStroke();
   drawFermatSpiral( gIteration, gRotationAngle );
   gIteration++;
@@ -93,15 +95,19 @@ const drawRealFermatCurve = ( angleRotation, width ) => {
 
 const setSpiralMode = () => {
 
+  if( gNum === getSliderNumValue() ){
+    return;
+  }
+
   gNum = getSliderNumValue();
   gRotationAngle = 1 / gNum;
   console.log( 'num: ' + gNum );
   background( 'white' );
 
-  stroke( 'blue' );
+  stroke( color( 94, 100, 100 ) );
   drawLine( gNum, WIDTH );
 
-  stroke( 'red' );
+  stroke( color( 66, 100, 50 ) );
   drawRealFermatCurve( gRotationAngle, WIDTH );
 
   gIteration =  0;

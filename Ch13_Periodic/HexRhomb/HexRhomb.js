@@ -66,7 +66,8 @@ const initializeColor = () => {
 
 // Get random color
 const getRandomColor = () => {
-  return color( random( 100 ), 100, 100 );
+  // return color( random( 100 ), 100, 100 );
+  return color( random( 100 ), 80, 100 );
 }
 
 const initializeRotationArray = () => {

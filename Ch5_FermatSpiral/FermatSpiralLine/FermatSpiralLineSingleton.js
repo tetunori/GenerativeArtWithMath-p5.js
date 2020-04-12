@@ -17,10 +17,10 @@ function setup() {
   push();
     translate( WIDTH / 2, HEIGHT / 2 );
 
-    stroke( 'blue' );
+    stroke( color( 94, 100, 100 ) );
     drawLine( gNum, WIDTH );
 
-    stroke( 'red' );
+    stroke( color( 66, 100, 50 ) );
     drawRealFermatCurve( gRotationAngle, WIDTH );
   pop();
 
@@ -29,6 +29,8 @@ function setup() {
 function draw() {
   
   translate( WIDTH / 2, HEIGHT / 2 );
+
+  setSpiralMode();
   noStroke();
   drawFermatSpiral( gIteration, gRotationAngle );
   gIteration++;
@@ -93,15 +95,19 @@ const drawRealFermatCurve = ( angleRotation, width ) => {
 
 const setSpiralMode = () => {
 
+  if( gNum === getSliderNumValue() ){
+    return;
+  }
+
   gNum = getSliderNumValue();
   gRotationAngle = 1 / gNum;
   console.log( 'num: ' + gNum );
   background( 'white' );
 
-  stroke( 'blue' );
+  stroke( color( 94, 100, 100 ) );
   drawLine( gNum, WIDTH );
 
-  stroke( 'red' );
+  stroke( color( 66, 100, 50 ) );
   drawRealFermatCurve( gRotationAngle, WIDTH );
 
   gIteration =  0;
@@ -173,7 +179,6 @@ const setupController = ( initNum ) => {
   const maxNumSlider = 40;
   gSliderNum = createSlider( minNumSlider, maxNumSlider, initNum );
   gSliderNum.position( controllerOffset, controllerOffset / 2 );
-  gSliderNum.mouseReleased( setSpiralMode );
 
   const btCaptureImage = createButton( 'CAPTURE IMAGE' );
   btCaptureImage.position( controllerOffset, gSliderNum.y + controllerMargin );

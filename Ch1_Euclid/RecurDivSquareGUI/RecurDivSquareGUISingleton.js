@@ -127,11 +127,6 @@ const isOdd = ( number ) => {
   return ( number % 2 === 1 );
 }
 
-// Get random color
-const getRandomColor = () => {
-  return color( random( 100 ), 100, 100 );
-}
-
 // Get random integer between min and max
 const getRandomInteger = ( min, max ) => {
   return Math.floor( random( min, max ) );
@@ -155,7 +150,8 @@ const setColor = () => {
     gRandomColorArray.push( random( 100 ) );
   }
   
-  fill( color( gRandomColorArray[ gColorCount ], 100, 100 ) );
+  // fill( color( gRandomColorArray[ gColorCount ], 100, 100 ) );
+  fill( color( gRandomColorArray[ gColorCount ], 40, 100 ) );
   gColorCount++;
   
 }

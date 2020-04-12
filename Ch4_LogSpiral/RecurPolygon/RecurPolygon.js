@@ -8,7 +8,8 @@ const HEIGHT = 500;
 
 function setup() {
 
-  createCanvas( WIDTH, HEIGHT );
+  const myCanvas = createCanvas( WIDTH, HEIGHT );
+  myCanvas.touchStarted( mouseClicked ); 
   colorMode( HSB, 100 );
 
   showValues();

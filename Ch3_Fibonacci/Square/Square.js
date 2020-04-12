@@ -3,7 +3,8 @@ const WIDTH = 500;
 
 function setup() {
 
-  createCanvas( WIDTH, WIDTH );
+  const myCanvas = createCanvas( WIDTH, WIDTH );
+  myCanvas.touchStarted( mouseClicked ); 
   colorMode( HSB, 100 );
   showLatestFibonacciValue();
   noLoop();

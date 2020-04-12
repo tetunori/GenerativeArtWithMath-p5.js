@@ -13,7 +13,11 @@ const drawCell = ( num, array, modulo, height ) => {
 
       noStroke();
       const colorParam = array[ idRow ][ idColumn ] * 100 / modulo;
-      fill( colorParam, colorParam, 100 );
+      if( colorParam < 1 ){
+        fill( colorParam, colorParam, 100 );
+      }else{
+        fill( colorParam, colorParam, 90 );
+      }
       rect( xPos, yPos, scalar, scalar );
       
       xPos += scalar;

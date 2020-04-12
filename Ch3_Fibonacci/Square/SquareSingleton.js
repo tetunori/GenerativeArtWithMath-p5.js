@@ -3,7 +3,8 @@ const WIDTH = 500;
 
 function setup() {
 
-  createCanvas( WIDTH, WIDTH );
+  const myCanvas = createCanvas( WIDTH, WIDTH );
+  myCanvas.touchStarted( mouseClicked ); 
   colorMode( HSB, 100 );
   showLatestFibonacciValue();
   noLoop();
@@ -39,7 +40,8 @@ const drawSquare = ( width ) => {
     if( index > 0 ){
 
       // Change the colors in order
-      fill( ( 10 * index ) % 100, 100, 100 );
+      // fill( ( 10 * index ) % 100, 100, 100 );
+      fill( ( 10 * index ) % 100, 40, 100 );
 
       // Draw rect
       rect( scalar * xPos, scalar * yPos,

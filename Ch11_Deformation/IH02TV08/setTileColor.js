@@ -14,5 +14,6 @@ const setTileColor = () => {
 
 // Get random color
 const getRandomColor = () => {
-  return color( random( 100 ), 100, 100 );
+  // return color( random( 100 ), 100, 100 );
+  return color( random( 100 ), 40, 100 );
 }

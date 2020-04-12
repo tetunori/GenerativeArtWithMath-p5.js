@@ -7,7 +7,8 @@ const HEIGHT = 500;
 
 function setup() {
 
-  createCanvas( WIDTH, HEIGHT );
+  const myCanvas = createCanvas( WIDTH, HEIGHT );
+  myCanvas.touchStarted( mouseClicked ); 
   colorMode( HSB, 100 );
   background( 'white' );
 
@@ -101,7 +102,8 @@ const drawColorRect = ( xPos, yPos, width, height, index ) => {
   const scalar = gDivisionCanvasWidth / gArrayFibonacci[ 0 ];
 
   // Change the colors in order
-  fill( ( 100 * index / gDivisionNum ) % 100, 100, 100 );
+  // fill( ( 100 * index / gDivisionNum ) % 100, 100, 100 );
+  fill( ( 100 * index / gDivisionNum ) % 100, 40, 100 );
 
   rect( scalar * xPos, scalar * yPos, 
           scalar * width, scalar * height );

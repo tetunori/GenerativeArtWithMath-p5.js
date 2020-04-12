@@ -62,6 +62,7 @@ window.onload = () => {
     setNavigatorText();
     setContent();
     setSideDrawer();
+    setSourceIcons();
     
   }
 
@@ -123,6 +124,19 @@ const setSideDrawer = () => {
 
   targetItem.className = 'active';
   // console.log( targetItem );
+
+}
+
+const setSourceIcons = () => {
+
+  const githubURL = 'https://github.com/tetunori/GenerativeArtWithMath-p5.js/tree/master/' + directoryNameArray[ CHAPTER_NUM ] + '/' + codeNameArray[ CHAPTER_NUM ][ CODE_INDEX ];
+  const githubIcon = '<a href="' + githubURL + '" target="_blank"><img class="icons" src="./images/githubIcon.png" width="30px"></a>';
+
+  const openProecessingURL = openProcessingURLArray[ CHAPTER_NUM ][ CODE_INDEX ];
+  const openProcessingIcon = '<a href="' + openProecessingURL + '" target="_blank"><img class="icons" src="./images/openProcessingIcon.png" width="34px" target="_blank"></a>';
+  
+  const srcIconsElement = document.getElementById( 'srcIcons' );
+  srcIconsElement.insertAdjacentHTML( 'afterbegin', githubIcon + openProcessingIcon );
 
 }
 
@@ -275,6 +289,158 @@ const codeNameArray =
   chapt12CodeNameArray,
   chapt13CodeNameArray,
   chapt14CodeNameArray,
+];
+
+const BASE_OPURL = 'https://www.openprocessing.org/sketch/';
+
+const chapt1OpenProcessingURLArray =
+[
+  BASE_OPURL + '872029', 
+  BASE_OPURL + '872030', 
+  BASE_OPURL + '872031', 
+  BASE_OPURL + '872032', 
+  BASE_OPURL + '872033', 
+  BASE_OPURL + '872034', 
+  BASE_OPURL + '872035', 
+  BASE_OPURL + '872036'
+]; 
+
+const chapt2OpenProcessingURLArray =
+[
+  BASE_OPURL + '872044', 
+  BASE_OPURL + '872045', 
+  BASE_OPURL + '872046', 
+  BASE_OPURL + '872047', 
+  BASE_OPURL + '872048', 
+  BASE_OPURL + '872049'
+];
+
+const chapt3OpenProcessingURLArray =
+[
+  BASE_OPURL + '872061', 
+  BASE_OPURL + '872062', 
+  BASE_OPURL + '872063', 
+  BASE_OPURL + '872064', 
+  BASE_OPURL + '872065', 
+  BASE_OPURL + '872066', 
+  BASE_OPURL + '872067'
+];
+
+const chapt4OpenProcessingURLArray =
+[
+  BASE_OPURL + '872097', 
+  BASE_OPURL + '872098', 
+  BASE_OPURL + '872099', 
+  BASE_OPURL + '872101', 
+  BASE_OPURL + '872100', 
+  BASE_OPURL + '872102'
+];
+
+const chapt5OpenProcessingURLArray =
+[
+  BASE_OPURL + '860187', 
+  BASE_OPURL + '872113', 
+  BASE_OPURL + '872114'
+]; 
+
+const chapt6OpenProcessingURLArray =
+[
+  BASE_OPURL + '872119', 
+  BASE_OPURL + '872120', 
+  BASE_OPURL + '872121', 
+  BASE_OPURL + '872122'
+];
+
+const chapt7OpenProcessingURLArray =
+[
+  BASE_OPURL + '872131', 
+  BASE_OPURL + '860358', 
+  BASE_OPURL + '872132', 
+  BASE_OPURL + '872133', 
+  BASE_OPURL + '872134', 
+  BASE_OPURL + '872136'
+]; 
+
+const chapt8OpenProcessingURLArray =
+[
+  BASE_OPURL + '872196', 
+  BASE_OPURL + '872197', 
+  BASE_OPURL + '862401'
+]; 
+
+const chapt9OpenProcessingURLArray =
+[
+  BASE_OPURL + '872205', 
+  BASE_OPURL + '872206', 
+  BASE_OPURL + '872207', 
+  BASE_OPURL + '863917', 
+  BASE_OPURL + '872209', 
+  BASE_OPURL + '872210'
+]; 
+
+const chapt10OpenProcessingURLArray =
+[
+  BASE_OPURL + '864198', 
+  BASE_OPURL + '864196', 
+  BASE_OPURL + '872267', 
+  BASE_OPURL + '872269'
+];
+
+const chapt11OpenProcessingURLArray =
+[
+  BASE_OPURL + '864665', 
+  BASE_OPURL + '872285', 
+  BASE_OPURL + '864676', 
+  BASE_OPURL + '864770', 
+  BASE_OPURL + '865467', 
+  BASE_OPURL + '864285', 
+  BASE_OPURL + '872286', 
+  BASE_OPURL + '865476', 
+  BASE_OPURL + '864273'
+];
+
+const chapt12OpenProcessingURLArray =
+[
+  BASE_OPURL + '872291', 
+  BASE_OPURL + '872293',
+  BASE_OPURL + '872292', 
+  BASE_OPURL + '872294', 
+  BASE_OPURL + '868162'
+]; 
+
+const chapt13OpenProcessingURLArray =
+[
+  BASE_OPURL + '872317', 
+  BASE_OPURL + '868416', 
+  BASE_OPURL + '872318', 
+  BASE_OPURL + '868382'
+];
+
+const chapt14OpenProcessingURLArray =
+[
+  BASE_OPURL + '869692', 
+  BASE_OPURL + '870527', 
+  BASE_OPURL + '869134', 
+  BASE_OPURL + '868513'
+]; 
+
+const openProcessingURLArray = 
+[
+  undefined, // Dummy
+  chapt1OpenProcessingURLArray,
+  chapt2OpenProcessingURLArray,
+  chapt3OpenProcessingURLArray,
+  chapt4OpenProcessingURLArray,
+  chapt5OpenProcessingURLArray,
+  chapt6OpenProcessingURLArray,
+  chapt7OpenProcessingURLArray,
+  chapt8OpenProcessingURLArray,
+  chapt9OpenProcessingURLArray,
+  chapt10OpenProcessingURLArray,
+  chapt11OpenProcessingURLArray,
+  chapt12OpenProcessingURLArray,
+  chapt13OpenProcessingURLArray,
+  chapt14OpenProcessingURLArray,
 ];
 
 const directoryNameArray = 

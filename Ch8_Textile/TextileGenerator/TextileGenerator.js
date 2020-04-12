@@ -13,7 +13,8 @@ let gMatrixP;
 
 function setup() {
 
-  createCanvas( WIDTH, HEIGHT );
+  const myCanvas = createCanvas( WIDTH, HEIGHT );
+  myCanvas.touchEnded( mouseClicked ); 
 
   gMatrixA = getNewMatrix( gRowA,    gColumnA );
   gMatrixB = getNewMatrix( gColumnA, gColumnA );
@@ -55,8 +56,8 @@ function draw() {
 
 function mouseClicked() {
 
-  const x = floor( mouseX / SCALAR );
-  const y = floor( mouseY / SCALAR );
+  const x = floor( getPointerX() / SCALAR );
+  const y = floor( getPointerY() / SCALAR );
 
   if( y < gColumnA ){
     if( x < gColumnA ){
@@ -66,6 +67,26 @@ function mouseClicked() {
     }
   }else if( x < gColumnA ){
     toggleElement( gMatrixA, y - gColumnA, x );
+  }
+
+}
+
+const getPointerX = () => {
+
+  if( touches[0] ){
+    return touches[0].x;
+  }else{
+    return mouseX;
+  }
+
+}
+
+const getPointerY = () => {
+
+  if( touches[0] ){
+    return touches[0].y;
+  }else{
+    return mouseY;
   }
 
 }

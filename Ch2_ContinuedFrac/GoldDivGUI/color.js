@@ -20,7 +20,8 @@ const drawColorRect = ( xPos, yPos, width, height, count ) => {
   if( isEnableMondrian() ){
     setMondrianColor( gRandomColorArray[ count ] );
   }else{    
-    fill( color( gRandomColorArray[ count ], 100, 100 ) );
+    // fill( color( gRandomColorArray[ count ], 100, 100 ) );
+    fill( color( gRandomColorArray[ count ], 40, 100 ) );
     strokeWeight( 1 );
   }
 

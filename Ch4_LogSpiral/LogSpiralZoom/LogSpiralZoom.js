@@ -4,7 +4,8 @@ const HEIGHT = 500;
 
 function setup() {
 
-  createCanvas( WIDTH, WIDTH );
+  const myCanvas = createCanvas( WIDTH, WIDTH );
+  myCanvas.touchStarted( getPointerX ); 
   colorMode( HSB, 100 );
   
 }

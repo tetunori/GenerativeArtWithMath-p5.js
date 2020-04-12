@@ -9,7 +9,8 @@ const HEIGHT = 500;
 
 function setup() {
 
-  createCanvas( WIDTH, HEIGHT );
+  const myCanvas = createCanvas( WIDTH, HEIGHT );
+  myCanvas.touchStarted( mouseClicked ); 
   colorMode( HSB, 100 );
   setupController();
   toggleTransition();
@@ -144,7 +145,11 @@ const drawCell = ( generation, num, array, modulo, width ) => {
   for( const element of array ){
 
     const colorParam = element * 100 / modulo;
-    fill( colorParam, colorParam, 100 );
+    if( colorParam < 1 ){
+      fill( colorParam, colorParam, 100 );
+    }else{
+      fill( colorParam, colorParam, 90 );
+    }
     rect( xPos, yPos, scalar, scalar );
     xPos += scalar;
 

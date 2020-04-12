@@ -25,7 +25,7 @@ function setup() {
 function draw() {
 
   background( 'white' );
-  gModulo = getSliderModuloValue();
+  setModuloValue();
   drawCell( gMaxGenerationNum, gStateArray, gModulo, HEIGHT );
   updateState();
 
@@ -100,7 +100,11 @@ const drawCell = ( num, array, modulo, height ) => {
 
       noStroke();
       const colorParam = array[ idRow ][ idColumn ] * 100 / modulo;
-      fill( colorParam, colorParam, 100 );
+      if( colorParam < 1 ){
+        fill( colorParam, colorParam, 100 );
+      }else{
+        fill( colorParam, colorParam, 90 );
+      }
       rect( xPos, yPos, scalar, scalar );
       
       xPos += scalar;
@@ -138,7 +142,11 @@ const disableCaptureImage = () => {
 
 let gSliderModulo;
 
-const onChangeModuloValue = () => {
+const setModuloValue = () => {
+
+  if( gModulo === getSliderModuloValue() ){
+    return;
+  }
 
   initialize();
   gModulo = getSliderModuloValue();
@@ -161,7 +169,6 @@ const setupController = ( initModulo ) => {
   const maxNumSlider = 10;
   gSliderModulo = createSlider( minNumSlider, maxNumSlider, initModulo );
   gSliderModulo.position( controllerOffset, controllerOffset );
-  gSliderModulo.mouseReleased( onChangeModuloValue );
 
   // Button Settings
   const buttonWidth = 150;
