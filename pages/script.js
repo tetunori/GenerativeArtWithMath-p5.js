@@ -331,16 +331,16 @@ const chapt4OpenProcessingURLArray =
   BASE_OPURL + '872097', 
   BASE_OPURL + '872098', 
   BASE_OPURL + '872099', 
-  BASE_OPURL + '872100', 
   BASE_OPURL + '872101', 
+  BASE_OPURL + '872100', 
   BASE_OPURL + '872102'
 ];
 
 const chapt5OpenProcessingURLArray =
 [
-  BASE_OPURL + 'FermatSpiral', 
-  BASE_OPURL + 'FermatSpiral2', 
-  BASE_OPURL + 'FermatSpiralLine'
+  BASE_OPURL + '860187', 
+  BASE_OPURL + '872113', 
+  BASE_OPURL + '872114'
 ]; 
 
 const chapt6OpenProcessingURLArray =
