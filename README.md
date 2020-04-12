@@ -1,5 +1,5 @@
 # "Generative Art with Math" p5.js Samples
-Version 0.5.0  
+Version 1.0.0  
 <img src="./images/screenShot.png" width="800px">
 
 # Description
